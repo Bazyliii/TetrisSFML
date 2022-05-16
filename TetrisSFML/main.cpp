@@ -49,9 +49,9 @@ int main(void) {
 			{
 				cout << "Prawo";
 			}
-			if (Keyboard::isKeyPressed(Keyboard::Left))
+			if (Keyboard::isKeyPressed(Keyboard::Down))
 			{
-				cout << "Lewo";
+				cout << "Dol";
 			}
 		}
 		window.clear(Color::Black);
