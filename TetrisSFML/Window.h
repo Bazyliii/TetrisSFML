@@ -15,9 +15,12 @@ public:
         window(VideoMode(800, 600), "Tetris")
     {
         arena = Arena();
+        arena.printBlock(Box());
+
         window.setFramerateLimit(60);
         while (window.isOpen())
         {
+
             Event event;
             while (window.pollEvent(event))
             {
@@ -26,6 +29,7 @@ public:
             }
             window.setActive();
             window.display();
+
         }
 	}
 };

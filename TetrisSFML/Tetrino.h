@@ -17,6 +17,7 @@ private:
 
 class Box :public iTetrino
 {
+public:
 	Box();
 };
 
