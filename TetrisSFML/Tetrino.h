@@ -10,16 +10,7 @@ public:
 	static const int height = 4;
 	sf::Color block[height][width];
 	iTetrino();
-	void rotate()
-	{ // rotate by 90deg (ccw)
-		if (width != height) throw("NIE");
-		for (int i = 0; i < width; i++)
-			std::reverse(block[i], block[i] + width);
-		for (int i = 0; i < width; i++) {
-			for (int j = i; j < width; j++)
-				std::swap(block[i][j], block[j][i]);
-		}
-	}
+	void rotate();
 private:
 };
 
