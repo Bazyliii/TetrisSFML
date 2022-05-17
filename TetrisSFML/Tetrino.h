@@ -20,3 +20,33 @@ class Box :public iTetrino
 {
 	Box();
 };
+
+class TShape :public iTetrino
+{
+	TShape();
+};
+
+class IShape :public iTetrino
+{
+	IShape();
+};
+
+class LShapeRight :public iTetrino
+{
+	LShapeRight();
+};
+
+class LShapeLeft :public iTetrino
+{
+	LShapeLeft();
+};
+
+class ZShapeLeft :public iTetrino
+{
+	ZShapeLeft();
+};
+
+class ZShapeRight :public iTetrino
+{
+	ZShapeRight();
+};
