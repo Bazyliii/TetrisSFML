@@ -15,33 +15,52 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="box.cpp">
-      <Filter>Pliki zasobów</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="arena.cpp">
-      <Filter>Pliki zasobów</Filter>
+    <ClCompile Include="Block.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="window.cpp">
-      <Filter>Pliki zasobów</Filter>
+    <ClCompile Include="Tetrino.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisArena.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="InputState.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="box.h">
+    <ClInclude Include="Collision.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="arena.h">
+    <ClInclude Include="Enums.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="window.h">
+    <ClInclude Include="Tetrino.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="TetrisSFML.rc">
-      <Filter>Pliki zasobów</Filter>
-    </ResourceCompile>
+    <ClInclude Include="TetrisArena.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

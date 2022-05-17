@@ -151,18 +151,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arena.cpp" />
-    <ClCompile Include="box.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="window.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="InputState.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tetrino.cpp" />
+    <ClCompile Include="TetrisArena.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arena.h" />
-    <ClInclude Include="box.h" />
-    <ClInclude Include="window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="TetrisSFML.rc" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="Inputs.h" />
+    <ClInclude Include="Tetrino.h" />
+    <ClInclude Include="TetrisArena.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
