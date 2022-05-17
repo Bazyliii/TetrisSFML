@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <array>
+#include "Tetrino.h"
 #define arenaWidth 10
 #define arenaHeight 20
 
