@@ -1,7 +1,5 @@
 #include "TetrisArena.h"
 
-int Matrix[arenaHeight + 2][arenaWidth + 2] = {};
-
 Arena::Arena()
 {
 	for (int i = 0; i < arenaHeight + 2; i++)
@@ -26,7 +24,7 @@ Arena::Arena()
 
 }
 
-inline int* Arena::getArena()
+int* Arena::getArena()
 {
 	return *Matrix;
 }

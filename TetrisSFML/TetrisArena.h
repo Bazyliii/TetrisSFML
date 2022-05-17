@@ -5,6 +5,7 @@
 #define arenaHeight 20
 
 
+
 class Arena
 {
 	// Arena matrix: 
@@ -18,7 +19,7 @@ class Arena
 public:
 	Arena();
 	int* getArena();
-	void printBlock(int id, int x, int y) 
+	void printBlock(int id, iTetrino tetrino) 
 	{
 
 	}

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "TetrisArena.h"
+#include "Tetrino.h"
 using namespace sf;
 
 class AppWindow 
