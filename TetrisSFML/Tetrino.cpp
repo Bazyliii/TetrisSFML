@@ -18,6 +18,7 @@ TShape::TShape()
 	block[1][1] = color;	//0,1,1,0
 	block[1][2] = color;	//0,1,0,0
 	block[2][1] = color;	//0,0,0,0
+	length = 3;
 }
 
 IShape::IShape()
@@ -67,6 +68,7 @@ ZShapeLeft::ZShapeLeft()
 
 iTetrino::iTetrino()
 {
+	length = height;
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++)
@@ -79,10 +81,10 @@ iTetrino::iTetrino()
 void iTetrino::rotate()
 { // rotate by 90deg (ccw)
 	if (width != height) throw("NIE");
-	for (int i = 0; i < width; i++)
-		std::reverse(block[i], block[i] + width);
-	for (int i = 0; i < width; i++) {
-		for (int j = i; j < width; j++)
+	for (int i = 0; i < length; i++)
+		std::reverse(block[i], block[i] + length);
+	for (int i = 0; i < length; i++) {
+		for (int j = i; j < length; j++)
 			std::swap(block[i][j], block[j][i]);
 	}
 }
