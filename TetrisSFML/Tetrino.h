@@ -7,10 +7,9 @@ class iTetrino
 public:
 	static const int width = 4;
 	static const int height = 4;
-	sf::Color color;
-	int block[height][width];
+	sf::Color block[height][width];
 	iTetrino() :
-		block{}, color{1}
+		block{}
 	{}
 private:
 };

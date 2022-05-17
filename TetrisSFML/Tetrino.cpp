@@ -4,11 +4,11 @@ using namespace sf;
 
 Box::Box()
 {
-	block[1][1] = 1;	//0,0,0,0
-	block[1][2] = 1;	//0,1,1,0
-	block[2][1] = 1;	//0,1,1,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(213, 0, 249);		//Ró¿owa fuksja
+	sf::Color color(213, 0, 249); 			//Ró¿owa fuksja
+	block[1][1] = color;	//0,0,0,0
+	block[1][2] = color;	//0,1,1,0
+	block[2][1] = color;	//0,1,1,0
+	block[2][2] = color;	//0,0,0,0
 }
 
 TShape::TShape()
