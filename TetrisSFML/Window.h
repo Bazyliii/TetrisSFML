@@ -48,20 +48,8 @@ public:
 		window(VideoMode(800, 600), "Tetris", Style::Titlebar | Style::Close)
 	{
 		arena = Arena();
-		tetrino = LShapeRight();
+		tetrino = TShape();
 		window.setFramerateLimit(60);
 	}
-	void appLoop() {
-		RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
-		while (window.isOpen())
-		{
-			int list_length = 0;
-			renderArena(renderList, list_length);
-
-			listenEvents();
-
-			printArena(renderList, list_length);
-		}
-		delete[] renderList;
-	}
+	void appLoop();
 };

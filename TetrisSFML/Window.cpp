@@ -41,3 +41,17 @@ void AppWindow::listenEvents()
 		}
 	}
 }
+
+void AppWindow::appLoop() {
+	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
+	while (window.isOpen())
+	{
+		int list_length = 0;
+		renderArena(renderList, list_length);
+
+		listenEvents();
+
+		printArena(renderList, list_length);
+	}
+	delete[] renderList;
+}
