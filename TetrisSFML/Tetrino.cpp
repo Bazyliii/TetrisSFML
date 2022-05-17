@@ -64,3 +64,14 @@ ZShapeLeft::ZShapeLeft()
 	block[1][2] = color;	//0,1,1,0
 	block[2][2] = color;	//0,0,0,0
 }
+
+iTetrino::iTetrino()
+{
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			block[i][j] = usedColors::backgroundColor;
+		}
+	}
+}
