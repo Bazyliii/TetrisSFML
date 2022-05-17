@@ -6,6 +6,7 @@ Box::Box()
 	block[1][2] = 1;	//0,1,1,0
 	block[2][1] = 1;	//0,1,1,0
 	block[2][2] = 1;	//0,0,0,0
+	color = sf::Color(255,255,255);
 }
 
 TShape::TShape()
