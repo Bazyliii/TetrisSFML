@@ -166,7 +166,7 @@
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="Inputs.h" />
+    <ClInclude Include="InputState.h" />
     <ClInclude Include="Tetrino.h" />
     <ClInclude Include="TetrisArena.h" />
     <ClInclude Include="Window.h" />
