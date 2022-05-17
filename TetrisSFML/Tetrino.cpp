@@ -17,7 +17,7 @@ TShape::TShape()
 	block[1][0] = color;	//0,1,0,0
 	block[1][1] = color;	//0,1,1,0
 	block[1][2] = color;	//0,1,0,0
-	block[2][2] = color;	//0,0,0,0
+	block[2][1] = color;	//0,0,0,0
 }
 
 IShape::IShape()

@@ -4,7 +4,7 @@
 #include "TetrisArena.h"
 #include "Tetrino.h"
 #include "Colors.h"
-#define SIZE 40
+#define SIZE 25
 
 using namespace sf;
 
@@ -19,11 +19,11 @@ public:
 		window(VideoMode(800, 600), "Tetris")
 	{
 		arena = Arena();
-		arena.printBlock(Box());
+		arena.printBlock(LShapeRight());
 		window.setFramerateLimit(60);
 		while (window.isOpen())
 		{
-			RectangleShape chujnia[arenaWidth+2+arenaHeight+2];
+			RectangleShape chujnia[(arenaWidth+2)*(arenaHeight+2)];
 			int chujnia_length = 0;
 			for (int j = 0; j < arenaHeight + 2;j++) {
 				for (int i = 0;i < arenaWidth + 2;i++) {
