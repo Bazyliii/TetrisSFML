@@ -28,6 +28,20 @@ int* Arena::getArena()
 	return *Matrix;
 }
 
+void Arena::printBlock(iTetrino tetrino)
+{
+	std::memcpy(temmpMatrix, Matrix, sizeof(Matrix));
+	int arenaCenter = ((arenaWidth + 2) / 2) - (iTetrino::width / 2);
+	for (int i = 1; i < iTetrino::height; i++)
+	{
+		for (int j = arenaCenter, int k = 0; j < arenaCenter + iTetrino::width; j++, k++)
+		{
+			temmpMatrix[i][j] = tetrino.block[i - 1][k];
+		}
+	}
+
+}
+
 void Arena::saveMatrix()
 {
 	std::memcpy(Matrix, temmpMatrix, sizeof(Matrix));
