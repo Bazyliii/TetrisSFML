@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
+#include "TetrisArena.h"
 
 using namespace sf;
 using namespace std;
