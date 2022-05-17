@@ -21,7 +21,6 @@ Arena::Arena()
 		Matrix[0][i] = -1;
 		Matrix[arenaHeight + 1][i] = -1;
 	}
-
 }
 
 int* Arena::getArena()
