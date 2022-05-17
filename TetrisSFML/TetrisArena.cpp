@@ -28,3 +28,8 @@ int* Arena::getArena()
 	return *Matrix;
 }
 
+void Arena::saveMatrix()
+{
+	std::memcpy(Matrix, temmpMatrix, sizeof(Matrix));
+}
+

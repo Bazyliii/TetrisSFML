@@ -20,10 +20,18 @@ class Arena
 public:
 	Arena();
 	int* getArena();
-	void printBlock(int id, iTetrino tetrino) 
+	void printBlock(iTetrino tetrino)
 	{
+		std::memcpy(temmpMatrix, Matrix, sizeof(Matrix));
+		int arenaCenter = ((arenaWidth + 2) / 2) - (iTetrino::width / 2);
+		for (int i = arenaCenter; i < arenaCenter + iTetrino::width; i++)
+		{
+
+		}
 
 	}
+	void saveMatrix();
 private:
 	int Matrix[arenaHeight + 2][arenaWidth + 2];
+	int temmpMatrix[arenaHeight + 2][arenaWidth + 2];
 };
