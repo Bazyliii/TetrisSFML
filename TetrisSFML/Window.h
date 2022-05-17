@@ -3,6 +3,7 @@
 #include <SFML/Main.hpp>
 #include "TetrisArena.h"
 #include "Tetrino.h"
+#include "Colors.h"
 #define SIZE 40
 
 using namespace sf;
@@ -22,15 +23,15 @@ public:
 		window.setFramerateLimit(60);
 		while (window.isOpen())
 		{
-			RectangleShape chujnia[arenaWidth+2];
+			RectangleShape chujnia[arenaWidth+2+arenaHeight+2];
 			int chujnia_length = 0;
 			for (int j = 0; j < arenaHeight + 2;j++) {
 				for (int i = 0;i < arenaWidth + 2;i++) {
-					if () {
-					
+					if (usedColors::backgroundColor==arena.tempMatrix[j][i]) {
+						continue;
 					}
 					RectangleShape chuj(Vector2f(SIZE, SIZE));
-
+					chuj.setFillColor(arena.tempMatrix[j][i]);
 					chuj.setPosition(Vector2f(i * SIZE, j * SIZE));
 					chujnia[chujnia_length++] = chuj;
 				}
