@@ -5,10 +5,23 @@
 #define arenaHeight 20
 
 
-class Arena 
+class Arena
 {
+	// Arena matrix: 
+	// 0 <-- blank space
+	// -1 <-- border
+	// 1,inf <-- blocks id's
+
+
+
+
 public:
 	Arena();
+	int* getArena();
+	void printBlock(int id, int x, int y) 
+	{
+
+	}
 private:
-	int Matrix[arenaHeight][arenaWidth];
+	int Matrix[arenaHeight + 2][arenaWidth + 2];
 };
