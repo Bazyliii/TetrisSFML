@@ -4,7 +4,7 @@ using namespace sf;
 
 Box::Box()
 {
-	sf::Color color(213, 0, 249); 			//Ró¿owa fuksja
+	Color color(213, 0, 249); 		//Ró¿owa fuksja
 	block[1][1] = color;	//0,0,0,0
 	block[1][2] = color;	//0,1,1,0
 	block[2][1] = color;	//0,1,1,0
@@ -13,54 +13,54 @@ Box::Box()
 
 TShape::TShape()
 {
-	block[1][0] = 1;	//0,1,0,0
-	block[1][1] = 1;	//0,1,1,0
-	block[1][2] = 1;	//0,1,0,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(118, 255, 3);		//Limonkowy
+	Color color(118, 255, 3);		//Limonkowy
+	block[1][0] = color;	//0,1,0,0
+	block[1][1] = color;	//0,1,1,0
+	block[1][2] = color;	//0,1,0,0
+	block[2][2] = color;	//0,0,0,0
 }
 
 IShape::IShape()
 {
-	block[1][0] = 1;	//0,1,0,0
-	block[1][1] = 1;	//0,1,0,0
-	block[1][2] = 1;	//0,1,0,0
-	block[1][3] = 1;	//0,1,0,0
-	color = Color(24, 255, 255);	//Turkus
+	Color color(24, 255, 255);		//Turkus
+	block[1][0] = color;	//0,1,0,0
+	block[1][1] = color;	//0,1,0,0
+	block[1][2] = color;	//0,1,0,0
+	block[1][3] = color;	//0,1,0,0
 }
 
 LShapeRight::LShapeRight()
 {
-	block[1][0] = 1;	//0,1,0,0
-	block[1][1] = 1;	//0,1,0,0
-	block[1][2] = 1;	//0,1,1,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(244, 67, 54);		//Czerwony?
+	Color color(244, 67, 54);		//Czerwony?
+	block[1][0] = color;	//0,1,0,0
+	block[1][1] = color;	//0,1,0,0
+	block[1][2] = color;	//0,1,1,0
+	block[2][2] = color;	//0,0,0,0
 }
 
 LShapeLeft::LShapeLeft()
 {
-	block[2][0] = 1;	//0,0,1,0
-	block[2][1] = 1;	//0,0,1,0
-	block[1][2] = 1;	//0,1,1,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(48, 79, 254);		//Niebieski
+	Color color(48, 79, 254);		//Niebieski
+	block[2][0] = color;	//0,0,1,0
+	block[2][1] = color;	//0,0,1,0
+	block[1][2] = color;	//0,1,1,0
+	block[2][2] = color;	//0,0,0,0
 }
 
 ZShapeRight::ZShapeRight()
 {
-	block[0][1] = 1;	//0,0,0,0
-	block[1][1] = 1;	//1,1,0,0
-	block[1][2] = 1;	//0,1,1,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(255, 61, 0);		//Pomarañczowy
+	Color color(255, 61, 0);		//Pomarañczowy
+	block[0][1] = color;	//0,0,0,0
+	block[1][1] = color;	//1,1,0,0
+	block[1][2] = color;	//0,1,1,0
+	block[2][2] = color;	//0,0,0,0
 }
 
 ZShapeLeft::ZShapeLeft()
 {
-	block[2][1] = 1;	//0,0,0,0
-	block[3][1] = 1;	//0,0,1,1
-	block[1][2] = 1;	//0,1,1,0
-	block[2][2] = 1;	//0,0,0,0
-	color = Color(255, 255, 0);		//¯ó³ty
+	Color color(255, 255, 0);		//¯ó³ty
+	block[2][1] = color;	//0,0,0,0
+	block[3][1] = color;	//0,0,1,1
+	block[1][2] = color;	//0,1,1,0
+	block[2][2] = color;	//0,0,0,0
 }
