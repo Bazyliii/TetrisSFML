@@ -23,30 +23,36 @@ public:
 
 class TShape :public iTetrino
 {
+public:
 	TShape();
 };
 
 class IShape :public iTetrino
 {
+public:
 	IShape();
 };
 
 class LShapeRight :public iTetrino
 {
+public:
 	LShapeRight();
 };
 
 class LShapeLeft :public iTetrino
 {
+public:
 	LShapeLeft();
 };
 
 class ZShapeLeft :public iTetrino
 {
+public:
 	ZShapeLeft();
 };
 
 class ZShapeRight :public iTetrino
 {
+public:
 	ZShapeRight();
 };
