@@ -1,7 +1,6 @@
 #include "TetrisArena.h"
 
-const sf::Color Arena::backgroundColor(52, 70, 93);
-const sf::Color Arena::borderColor(19, 20, 24);
+
 
 Arena::Arena()
 {
@@ -9,28 +8,28 @@ Arena::Arena()
 	{
 		for (int j = 0; j < arenaWidth + 2; j++)
 		{
-			Matrix[i][j] = backgroundColor;
+			Matrix[i][j] = usedColors::backgroundColor;
 
-			tempMatrix[i][j] = backgroundColor;
+			tempMatrix[i][j] = usedColors::backgroundColor;
 		}
 	}
 
 	for (int i = 0; i < arenaHeight + 2; i++)
 	{
-		Matrix[i][0] = borderColor;
-		Matrix[i][arenaWidth + 1] = borderColor;
+		Matrix[i][0] = usedColors::borderColor;
+		Matrix[i][arenaWidth + 1] = usedColors::borderColor;
 
-		tempMatrix[i][0] = borderColor;
-		tempMatrix[i][arenaWidth + 1] = borderColor;
+		tempMatrix[i][0] = usedColors::borderColor;
+		tempMatrix[i][arenaWidth + 1] = usedColors::borderColor;
 	}
 
 	for (int i = 0; i < arenaWidth + 2; i++)
 	{
-		Matrix[0][i] = borderColor;
-		Matrix[arenaHeight + 1][i] = borderColor;
+		Matrix[0][i] = usedColors::borderColor;
+		Matrix[arenaHeight + 1][i] = usedColors::borderColor;
 
-		tempMatrix[0][i] = borderColor;
-		tempMatrix[arenaHeight + 1][i] = borderColor;
+		tempMatrix[0][i] = usedColors::borderColor;
+		tempMatrix[arenaHeight + 1][i] = usedColors::borderColor;
 	}
 }
 

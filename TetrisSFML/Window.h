@@ -29,7 +29,6 @@ public:
             }
             window.setActive();
             window.display();
-
         }
 	}
 };

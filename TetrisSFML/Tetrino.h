@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Colors.h"
 
 
 class iTetrino
@@ -8,9 +9,7 @@ public:
 	static const int width = 4;
 	static const int height = 4;
 	sf::Color block[height][width];
-	iTetrino() :
-		block{}
-	{}
+	iTetrino();
 private:
 };
 
