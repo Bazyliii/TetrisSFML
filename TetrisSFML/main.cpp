@@ -6,4 +6,5 @@ using namespace std;
 int main(void) 
 {
 	AppWindow appWindow;
+	appWindow.appLoop();
 }
