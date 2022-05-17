@@ -1,15 +1,14 @@
 #pragma once
 #include <iostream>
 #include <array>
-#define arenaWidth
-#define arenaHeight
+#define arenaWidth 10
+#define arenaHeight 20
 
 
-class arena {
+class Arena 
+{
 public:
-	arena() {
-
-	}
+	Arena();
 private:
-	
+	int Matrix[arenaHeight][arenaWidth];
 };
