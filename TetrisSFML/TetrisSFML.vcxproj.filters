@@ -18,23 +18,23 @@
     <ClCompile Include="Main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Block.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki zasobów</Filter>
     </ClCompile>
-    <ClCompile Include="Tetrino.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="TetrisArena.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki zasobów</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki zasobów</Filter>
     </ClCompile>
     <ClCompile Include="InputState.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki zasobów</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrino.cpp">
+      <Filter>Pliki zasobów</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisArena.cpp">
+      <Filter>Pliki zasobów</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
