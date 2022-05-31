@@ -49,7 +49,7 @@ private:
 			arena.printBlock(tetrino);
 			break;
 		case Keyboard::Key::S:
-			tetrino.Off_Y--;
+			tetrino.Off_Y++;
 			arena.printBlock(tetrino);
 			break;
 			//SOMETHING ELSE
