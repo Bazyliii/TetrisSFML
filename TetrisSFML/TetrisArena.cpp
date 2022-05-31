@@ -39,7 +39,7 @@ void Arena::printBlock(iTetrino tetrino)
 	int arenaCenter = ((arenaWidth + 2) / 2) - (iTetrino::width / 2);		//Calc arena center for blocks to be placed
 	for (int i = 1 + tetrino.Off_Y; i <= iTetrino::height; i++)
 	{
-		for (int j = arenaCenter, k = 0; j < arenaCenter + iTetrino::width; j++, k++)
+		for (int j = arenaCenter + tetrino.Off_X, k = 0; j < arenaCenter + iTetrino::width; j++, k++)
 		{
 			tempMatrix[i][j] = tetrino.block[i - 1][k];
 		}
