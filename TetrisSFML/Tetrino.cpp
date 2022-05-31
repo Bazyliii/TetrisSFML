@@ -74,8 +74,8 @@ ZShapeLeft::ZShapeLeft()
 
 iTetrino::iTetrino()
 {
-	srand(time(NULL));
-	randomPiece = rand() % 6;
+	Off_X = 0;
+	Off_Y = 0;
 	length = height;
 	for (int i = 0; i < height; i++)
 	{
