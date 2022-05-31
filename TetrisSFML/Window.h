@@ -16,7 +16,7 @@ private:
 	Arena arena;
 	RenderWindow window;
 	iTetrino tetrino;
-	int randomPieces;
+	int piece;
 	void renderArena(RectangleShape* renderList, int& list_length);
 
 	void printArena(RectangleShape* renderList, int& list_length);
@@ -47,8 +47,8 @@ private:
 
 	void randomPiece() {
 		srand(time(NULL));
-		randomPieces = rand() % 6;
-		switch (randomPieces) {
+		piece = rand() % 6;
+		switch (piece) {
 		case 0:
 			tetrino = Box();
 			break;
