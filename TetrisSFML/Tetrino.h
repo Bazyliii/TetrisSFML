@@ -13,7 +13,8 @@ public:
 	uint16_t Off_Y;
 	int16_t Off_X;
 	iTetrino();
-	void rotate();
+	void rotateCCW();
+	void rotateCW();
 private:
 };
 

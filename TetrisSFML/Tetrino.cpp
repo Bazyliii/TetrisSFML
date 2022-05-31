@@ -86,7 +86,7 @@ iTetrino::iTetrino()
 	}
 }
 
-void iTetrino::rotate()
+void iTetrino::rotateCCW()
 { // rotate by 90deg (ccw)
 	if (width != height) throw("NIE");
 	for (int i = 0; i < length; i++)
@@ -95,4 +95,10 @@ void iTetrino::rotate()
 		for (int j = i; j < length; j++)
 			std::swap(block[i][j], block[j][i]);
 	}
+}
+
+void iTetrino::rotateCW() {
+	rotateCCW();
+	rotateCCW();
+	rotateCCW();
 }
