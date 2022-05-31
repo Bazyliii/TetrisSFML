@@ -1,10 +1,11 @@
 #include "Tetrino.h"
 #include <time.h>
+#include "Colors.h"
 using namespace sf;
 
 Box::Box()
 {
-	color = Color(213, 0, 249); 		//Rozowa fuksja
+	color = usedColors::BoxColor; 		//Rozowa fuksja
 	block[0][0] = color;	//1,1,0,0
 	block[0][1] = color;	//1,1,0,0
 	block[1][0] = color;	//0,0,0,0
@@ -14,7 +15,7 @@ Box::Box()
 
 TShape::TShape()
 {
-	color = Color(118, 255, 3);		//Limonkowy
+	color = usedColors::TShapeColor;		//Limonkowy
 	block[0][1] = color;	//0,1,0,0
 	block[1][1] = color;	//0,1,1,0
 	block[2][1] = color;	//0,1,0,0
@@ -24,7 +25,7 @@ TShape::TShape()
 
 IShape::IShape()
 {
-	color = Color(24, 255, 255);		//Turkus
+	color = usedColors::IShapeColor;		//Turkus
 	block[1][0] = color;	//0,0,0,0
 	block[1][1] = color;	//1,1,1,1
 	block[1][2] = color;	//0,0,0,0
@@ -34,7 +35,7 @@ IShape::IShape()
 
 LShapeRight::LShapeRight()
 {
-	color = Color(244, 67, 54);		//Czerwony?
+	color = usedColors::LShapeRightColor;		//Czerwony?
 	block[1][0] = color;	//0,1,0,0
 	block[1][1] = color;	//0,1,0,0
 	block[1][2] = color;	//0,1,1,0
@@ -44,7 +45,7 @@ LShapeRight::LShapeRight()
 
 LShapeLeft::LShapeLeft()
 {
-	color = Color(48, 79, 254);		//Niebieski
+	color = usedColors::LShapeLeftColor;		//Niebieski
 	block[1][0] = color;	//0,1,0,0
 	block[1][1] = color;	//0,1,0,0
 	block[0][2] = color;	//1,1,0,0
@@ -54,7 +55,7 @@ LShapeLeft::LShapeLeft()
 
 ZShapeRight::ZShapeRight()
 {
-	color = Color(255, 61, 0);		//Pomaranczowy
+	color = usedColors::ZShapeRightColor;		//Pomaranczowy
 	block[0][1] = color;	//0,0,0,0
 	block[1][1] = color;	//1,1,0,0
 	block[1][2] = color;	//0,1,1,0
@@ -64,7 +65,7 @@ ZShapeRight::ZShapeRight()
 
 ZShapeLeft::ZShapeLeft()
 {
-	color = Color(255, 255, 0);		//zolty
+	color = usedColors::ZShapeLeftColor;		//zolty
 	block[0][1] = color;	//0,1,1,0
 	block[0][2] = color;	//1,1,0,0
 	block[1][0] = color;	//0,0,0,0
@@ -171,7 +172,7 @@ bool iTetrino::IsStatic()
 	return State;
 }
 
-void iTetrino::setStatic() 
+void iTetrino::setStatic()
 {
 	State = true;
 }

@@ -47,6 +47,12 @@ void AppWindow::appLoop() {
 	while (window.isOpen())
 	{
 		int list_length = 0;
+		p += 1;
+		if (p % 100 == 0) {
+			tetrino.moveDown();
+			arena.printBlock(tetrino);
+			p = 0;
+		}
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);

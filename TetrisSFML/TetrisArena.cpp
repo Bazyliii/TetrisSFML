@@ -1,7 +1,6 @@
 #include "TetrisArena.h"
 
 
-
 Arena::Arena()
 {
 	for (int i = 0; i < arenaHeight + 2; i++)
@@ -48,10 +47,10 @@ void Arena::printBlock(iTetrino& tetrino)
 			{
 				//Collisions
 				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) {
-					if (i == arenaHeight + 1) throw 420;
+					if (i == arenaHeight + 1) throw 420;	//Colision with bottom of arena
+					else if (tempMatrix[i][k] != usedColors::backgroundColor&&tempMatrix[i][k] != usedColors::borderColor)throw 420;
 					else throw 69420;
 				}
-				if (i >= arenaHeight + 2) throw 69420;
 				//Place block
 				if (tempMatrix[i][k] == usedColors::backgroundColor) tempMatrix[i][k] = tetrino.block[j][l];
 			}
@@ -76,7 +75,6 @@ void Arena::printBlock(iTetrino& tetrino)
 			break;
 		}
 	}
-
 }
 
 void Arena::saveMatrix()

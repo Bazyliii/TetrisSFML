@@ -5,6 +5,7 @@
 #include "Tetrino.h"
 #include "Colors.h"
 #include <time.h>
+
 #define SIZE 25
 
 using namespace sf;
@@ -17,6 +18,7 @@ private:
 	RenderWindow window;
 	iTetrino tetrino;
 	int piece;
+	int p;
 	void renderArena(RectangleShape* renderList, int& list_length);
 
 	void printArena(RectangleShape* renderList, int& list_length);
@@ -54,7 +56,7 @@ private:
 			break;
 			//SOMETHING ELSE
 		case Keyboard::Key::Space:
-			arena.printBlock(tetrino);
+			randomPiece();
 			break;
 		default:
 			break;
@@ -63,6 +65,8 @@ private:
 
 	void listenEvents();
 
+	
+public:
 	void randomPiece() {
 		srand(time(NULL));
 		piece = rand() % 6;
@@ -89,15 +93,15 @@ private:
 			tetrino = ZShapeRight();
 			break;
 		}
+		arena.printBlock(tetrino);
 	};
 
-public:
 	AppWindow() :
 		window(VideoMode(800, 600), "Tetris", Style::Titlebar | Style::Close)
 	{
 		arena = Arena();
 		randomPiece();
-		window.setFramerateLimit(60);
+		window.setFramerateLimit(144);
 	}
 	void appLoop();
 };
