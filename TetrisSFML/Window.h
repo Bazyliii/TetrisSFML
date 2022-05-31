@@ -4,9 +4,11 @@
 #include "TetrisArena.h"
 #include "Tetrino.h"
 #include "Colors.h"
+#include <time.h>
 #define SIZE 25
 
 using namespace sf;
+using namespace std;
 
 class AppWindow
 {
@@ -14,6 +16,7 @@ private:
 	Arena arena;
 	RenderWindow window;
 	iTetrino tetrino;
+	int randomPieces;
 	void renderArena(RectangleShape* renderList, int& list_length);
 
 	void printArena(RectangleShape* renderList, int& list_length);
@@ -42,13 +45,40 @@ private:
 
 	void listenEvents();
 
+	void randomPiece() {
+		srand(time(NULL));
+		randomPieces = rand() % 6;
+		switch (randomPieces) {
+		case 0:
+			tetrino = Box();
+			break;
+		case 1:
+			tetrino = TShape();
+			break;
+		case 2:
+			tetrino = IShape();
+			break;
+		case 3:
+			tetrino = LShapeLeft();
+			break;
+		case 4:
+			tetrino = LShapeRight();
+			break;
+		case 5:
+			tetrino = ZShapeLeft();
+			break;
+		case 6:
+			tetrino = ZShapeRight();
+			break;
+		}
+	};
 
 public:
 	AppWindow() :
 		window(VideoMode(800, 600), "Tetris", Style::Titlebar | Style::Close)
 	{
 		arena = Arena();
-		tetrino = TShape();
+		randomPiece();
 		window.setFramerateLimit(60);
 	}
 	void appLoop();
