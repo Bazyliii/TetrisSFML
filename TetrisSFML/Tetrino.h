@@ -10,6 +10,8 @@ public:
 	static const int height = 4;
 	sf::Color block[height][width];
 	int length;
+	uint16_t Off_Y;
+	int16_t Off_X;
 	iTetrino();
 	void rotate();
 private:
