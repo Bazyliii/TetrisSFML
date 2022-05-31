@@ -1,10 +1,10 @@
 #include "Tetrino.h"
-
+#include <time.h>
 using namespace sf;
 
 Box::Box()
 {
-	Color color(213, 0, 249); 		//R�owa fuksja
+	Color color(213, 0, 249); 		//Rozowa fuksja
 	block[0][0] = color;	//1,1,0,0
 	block[0][1] = color;	//1,1,0,0
 	block[1][0] = color;	//0,0,0,0
@@ -54,7 +54,7 @@ LShapeLeft::LShapeLeft()
 
 ZShapeRight::ZShapeRight()
 {
-	Color color(255, 61, 0);		//Pomara�czowy
+	Color color(255, 61, 0);		//Pomaranczowy
 	block[0][1] = color;	//0,0,0,0
 	block[1][1] = color;	//1,1,0,0
 	block[1][2] = color;	//0,1,1,0
@@ -64,7 +64,7 @@ ZShapeRight::ZShapeRight()
 
 ZShapeLeft::ZShapeLeft()
 {
-	Color color(255, 255, 0);		//��ty
+	Color color(255, 255, 0);		//zolty
 	block[0][1] = color;	//0,1,1,0
 	block[0][2] = color;	//1,1,0,0
 	block[1][0] = color;	//0,0,0,0
@@ -74,6 +74,8 @@ ZShapeLeft::ZShapeLeft()
 
 iTetrino::iTetrino()
 {
+	srand(time(NULL));
+	randomPiece = rand() % 6;
 	length = height;
 	for (int i = 0; i < height; i++)
 	{
