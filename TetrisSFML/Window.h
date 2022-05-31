@@ -41,15 +41,15 @@ private:
 
 			//MOVEMENT
 		case Keyboard::Key::A:
-			tetrino.Off_X--;
+			tetrino.moveLeft();
 			arena.printBlock(tetrino);
 			break;
 		case Keyboard::Key::D:
-			tetrino.Off_X++;
+			tetrino.moveRight();
 			arena.printBlock(tetrino);
 			break;
 		case Keyboard::Key::S:
-			tetrino.Off_Y++;
+			tetrino.moveDown();
 			arena.printBlock(tetrino);
 			break;
 			//SOMETHING ELSE

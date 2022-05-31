@@ -5,17 +5,28 @@
 
 class iTetrino
 {
-public:
+private:
 	static const int width = 4;
 	static const int height = 4;
-	sf::Color block[height][width];
-	int length;
 	uint16_t Off_Y;
 	int16_t Off_X;
+	uint16_t Off_Y_last;
+	int16_t Off_X_last;
+public:
+	int length;
+	sf::Color color;
+	sf::Color block[height][width];
 	iTetrino();
 	void rotateCCW();
 	void rotateCW();
-private:
+	void moveLeft();
+	void moveRight();
+	void moveDown();
+	void moveToLastPos();
+	sf::Color getColor();
+	uint16_t getOff_Y();
+	int16_t getOff_X();
+	int getLength();
 };
 
 
