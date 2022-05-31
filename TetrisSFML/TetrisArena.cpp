@@ -33,31 +33,48 @@ Arena::Arena()
 	}
 }
 
-void Arena::printBlock(iTetrino tetrino)
+void Arena::printBlock(iTetrino& tetrino)
 {
 	//PREPARE temp arena
+	if (tetrino.IsStatic()) return;
 	std::memcpy(tempMatrix, Matrix, sizeof(Matrix));							//Get tempMatrix up to date
 	int arenaCenter = ((arenaWidth + 2) / 2) - (tetrino.getLength() / 2);		//Calc arena center for blocks to be placed
 	//RENDERING
-	try 
+	try
 	{
 		for (int i = 1 + tetrino.getOff_Y(), j = 0; j < tetrino.getLength(); i++, j++)
 		{
 			for (int k = arenaCenter + tetrino.getOff_X(), l = 0; k < arenaCenter + tetrino.getLength() + tetrino.getOff_X(); k++, l++)
 			{
 				//Collisions
-				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) throw 69420;
+				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) {
+					if (i == arenaHeight + 1) throw 420;
+					else throw 69420;
+				}
+				if (i >= arenaHeight + 2) throw 69420;
 				//Place block
 				if (tempMatrix[i][k] == usedColors::backgroundColor) tempMatrix[i][k] = tetrino.block[j][l];
 			}
 		}
 	}
-	catch (int x) 
+	catch (int x)
 	{
-		if (x != 69420) throw 2137;
-		tetrino.moveToLastPos();
-		printBlock(tetrino);
-		return;
+		switch (x)
+		{
+		case 69420:
+			tetrino.moveToLastPos();
+			printBlock(tetrino);
+			return;
+		case 420:
+			tetrino.moveToLastPos();
+			printBlock(tetrino);
+			saveMatrix();
+			tetrino.setStatic();
+			return;
+		default:
+			throw 69420;
+			break;
+		}
 	}
 
 }

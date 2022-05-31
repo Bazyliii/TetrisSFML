@@ -8,14 +8,18 @@ class iTetrino
 private:
 	static const int width = 4;
 	static const int height = 4;
+	bool wasRotated;
+	bool State;
 	uint16_t Off_Y;
 	int16_t Off_X;
 	uint16_t Off_Y_last;
 	int16_t Off_X_last;
+	void rotate();
 public:
 	int length;
 	sf::Color color;
 	sf::Color block[height][width];
+	sf::Color lastblock[height][width];
 	iTetrino();
 	void rotateCCW();
 	void rotateCW();
@@ -27,6 +31,8 @@ public:
 	uint16_t getOff_Y();
 	int16_t getOff_X();
 	int getLength();
+	bool IsStatic();
+	void setStatic();
 };
 
 

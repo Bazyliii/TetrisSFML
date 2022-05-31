@@ -19,7 +19,7 @@ class Arena
 
 public:
 	Arena();
-	void printBlock(iTetrino tetrino);
+	void printBlock(iTetrino& tetrino);
 	void saveMatrix();
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];
 private:

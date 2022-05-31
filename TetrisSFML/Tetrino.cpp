@@ -72,9 +72,25 @@ ZShapeLeft::ZShapeLeft()
 	length = 3;
 }
 
+void iTetrino::rotate()
+{ // rotate by 90deg (ccw)
+	wasRotated = true;
+	Off_X_last = Off_X;
+	Off_Y_last = Off_Y;
+	if (width != height) throw("NIE");
+	for (int i = 0; i < length; i++)
+		std::reverse(block[i], block[i] + length);
+	for (int i = 0; i < length; i++) {
+		for (int j = i; j < length; j++)
+			std::swap(block[i][j], block[j][i]);
+	}
+}
+
 iTetrino::iTetrino()
 {
 	color = usedColors::backgroundColor;
+	wasRotated = false;
+	State = false;
 	Off_X = 0;
 	Off_Y = 0;
 	Off_X_last = 0;
@@ -87,55 +103,75 @@ iTetrino::iTetrino()
 			block[i][j] = color;
 		}
 	}
+	std::memcpy(lastblock, block, sizeof(block));
 }
 
 void iTetrino::rotateCCW()
-{ // rotate by 90deg (ccw)
-	if (width != height) throw("NIE");
-	for (int i = 0; i < length; i++)
-		std::reverse(block[i], block[i] + length);
-	for (int i = 0; i < length; i++) {
-		for (int j = i; j < length; j++)
-			std::swap(block[i][j], block[j][i]);
-	}
+{
+	std::memcpy(lastblock, block, sizeof(block));
+	rotate();
 }
 
-void iTetrino::rotateCW() {
-	rotateCCW();
-	rotateCCW();
-	rotateCCW();
+void iTetrino::rotateCW() 
+{
+	std::memcpy(lastblock, block, sizeof(block));
+	for (int i = 0; i < 3; i++) rotate();
 }
 
 void iTetrino::moveLeft()
 {
+	wasRotated = false;
 	Off_X_last = Off_X--;
+	Off_Y_last = Off_Y;
 }
 
-void iTetrino::moveRight() {
+void iTetrino::moveRight() 
+{
+	wasRotated = false;
 	Off_X_last = Off_X++;
+	Off_Y_last = Off_Y;
 }
 
-void iTetrino::moveDown() {
+void iTetrino::moveDown() 
+{
+	wasRotated = false;
+	Off_X_last = Off_X;
 	Off_Y_last = Off_Y++;
 }
 
-void iTetrino::moveToLastPos() {
+void iTetrino::moveToLastPos() 
+{
 	Off_X = Off_X_last;
 	Off_Y = Off_Y_last;
+	if (wasRotated) std::memcpy(block, lastblock, sizeof(lastblock));
 }
 
-sf::Color iTetrino::getColor() {
+sf::Color iTetrino::getColor() 
+{
 	return color;
 }
 
-uint16_t iTetrino::getOff_Y() {
+uint16_t iTetrino::getOff_Y() 
+{
 	return Off_Y;
 }
 
-int16_t iTetrino::getOff_X() {
+int16_t iTetrino::getOff_X() 
+{
 	return Off_X;
 }
 
-int iTetrino::getLength() {
+int iTetrino::getLength() 
+{
 	return length;
+}
+
+bool iTetrino::IsStatic() 
+{
+	return State;
+}
+
+void iTetrino::setStatic() 
+{
+	State = true;
 }
