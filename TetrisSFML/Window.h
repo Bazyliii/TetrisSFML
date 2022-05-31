@@ -25,16 +25,34 @@ private:
 	{
 		switch (event.key.code)
 		{
+			//ROTATION
+		case Keyboard::Key::Q:
+			tetrino.rotateCCW();
+			arena.printBlock(tetrino);
+			break;
+		case Keyboard::Key::E:
+			tetrino.rotateCW();
+			arena.printBlock(tetrino);
+			break;
+		case Keyboard::Key::W:
+			tetrino.rotateCW();
+			arena.printBlock(tetrino);
+			break;
+
+			//MOVEMENT
 		case Keyboard::Key::A:
-			tetrino.rotate();
+			tetrino.Off_X--;
 			arena.printBlock(tetrino);
 			break;
 		case Keyboard::Key::D:
-			tetrino.rotate();
-			tetrino.rotate();
-			tetrino.rotate();
+			tetrino.Off_X++;
 			arena.printBlock(tetrino);
 			break;
+		case Keyboard::Key::S:
+			tetrino.Off_Y--;
+			arena.printBlock(tetrino);
+			break;
+			//SOMETHING ELSE
 		case Keyboard::Key::Space:
 			arena.printBlock(tetrino);
 			break;
