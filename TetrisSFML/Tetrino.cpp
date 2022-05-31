@@ -4,11 +4,12 @@ using namespace sf;
 
 Box::Box()
 {
-	Color color(213, 0, 249); 		//Ró¿owa fuksja
+	Color color(213, 0, 249); 		//Rï¿½owa fuksja
+	block[0][0] = color;	//1,1,0,0
+	block[0][1] = color;	//1,1,0,0
+	block[1][0] = color;	//0,0,0,0
 	block[1][1] = color;	//0,0,0,0
-	block[1][2] = color;	//0,1,1,0
-	block[2][1] = color;	//0,1,1,0
-	block[2][2] = color;	//0,0,0,0
+	length = 2;
 }
 
 TShape::TShape()
@@ -18,55 +19,62 @@ TShape::TShape()
 	block[1][1] = color;	//0,1,1,0
 	block[2][1] = color;	//0,1,0,0
 	block[1][2] = color;	//0,0,0,0
+	length = 3;
 }
 
 IShape::IShape()
 {
 	Color color(24, 255, 255);		//Turkus
-	block[0][1] = color;	//0,1,0,0
-	block[1][1] = color;	//0,1,0,0
-	block[2][1] = color;	//0,1,0,0
-	block[3][1] = color;	//0,1,0,0
+	block[1][0] = color;	//0,0,0,0
+	block[1][1] = color;	//1,1,1,0
+	block[1][2] = color;	//0,0,0,0
+							//0,0,0,0
+	length = 3;
 }
 
 LShapeRight::LShapeRight()
 {
 	Color color(244, 67, 54);		//Czerwony?
-	block[0][1] = color;	//0,1,0,0
+	block[1][0] = color;	//0,1,0,0
 	block[1][1] = color;	//0,1,0,0
-	block[2][1] = color;	//0,1,1,0
+	block[1][2] = color;	//0,1,1,0
 	block[2][2] = color;	//0,0,0,0
+	length = 3;
 }
 
 LShapeLeft::LShapeLeft()
 {
 	Color color(48, 79, 254);		//Niebieski
-	block[0][2] = color;	//0,0,1,0
-	block[1][2] = color;	//0,0,1,0
-	block[2][1] = color;	//0,1,1,0
-	block[2][2] = color;	//0,0,0,0
+	block[1][0] = color;	//0,1,0,0
+	block[1][1] = color;	//0,1,0,0
+	block[0][2] = color;	//1,1,0,0
+	block[1][2] = color;	//0,0,0,0
+	length = 3;
 }
 
 ZShapeRight::ZShapeRight()
 {
-	Color color(255, 61, 0);		//Pomarañczowy
-	block[1][0] = color;	//0,0,0,0
+	Color color(255, 61, 0);		//Pomaraï¿½czowy
+	block[0][1] = color;	//0,0,0,0
 	block[1][1] = color;	//1,1,0,0
-	block[2][1] = color;	//0,1,1,0
+	block[1][2] = color;	//0,1,1,0
 	block[2][2] = color;	//0,0,0,0
+	length = 3;
 }
 
 ZShapeLeft::ZShapeLeft()
 {
-	Color color(255, 255, 0);		//¯ó³ty
-	block[1][2] = color;	//0,0,0,0
-	block[1][3] = color;	//0,0,1,1
-	block[2][1] = color;	//0,1,1,0
-	block[2][2] = color;	//0,0,0,0
+	Color color(255, 255, 0);		//ï¿½ï¿½ty
+	block[0][1] = color;	//0,1,1,0
+	block[0][2] = color;	//1,1,0,0
+	block[1][0] = color;	//0,0,0,0
+	block[1][1] = color;	//0,0,0,0
+	length = 3;
 }
 
 iTetrino::iTetrino()
 {
+	length = height;
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++)
@@ -79,10 +87,10 @@ iTetrino::iTetrino()
 void iTetrino::rotate()
 { // rotate by 90deg (ccw)
 	if (width != height) throw("NIE");
-	for (int i = 0; i < width; i++)
-		std::reverse(block[i], block[i] + width);
-	for (int i = 0; i < width; i++) {
-		for (int j = i; j < width; j++)
+	for (int i = 0; i < length; i++)
+		std::reverse(block[i], block[i] + length);
+	for (int i = 0; i < length; i++) {
+		for (int j = i; j < length; j++)
 			std::swap(block[i][j], block[j][i]);
 	}
 }
