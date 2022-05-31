@@ -35,9 +35,9 @@ Arena::Arena()
 
 void Arena::printBlock(iTetrino tetrino)
 {
-	std::memcpy(tempMatrix, Matrix, sizeof(Matrix));
-	int arenaCenter = ((arenaWidth + 2) / 2) - (iTetrino::width / 2);
-	for (int i = 1; i <= iTetrino::height; i++)
+	std::memcpy(tempMatrix, Matrix, sizeof(Matrix));						//Get tempMatrix up to date
+	int arenaCenter = ((arenaWidth + 2) / 2) - (iTetrino::width / 2);		//Calc arena center for blocks to be placed
+	for (int i = 1 + tetrino.Off_Y; i <= iTetrino::height; i++)
 	{
 		for (int j = arenaCenter, k = 0; j < arenaCenter + iTetrino::width; j++, k++)
 		{
