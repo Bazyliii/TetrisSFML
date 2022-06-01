@@ -1,4 +1,5 @@
 #include "TetrisArena.h"
+#include "Window.h"
 
 
 Arena::Arena()
@@ -47,9 +48,9 @@ void Arena::printBlock(iTetrino& tetrino)
 			{
 				//Collisions
 				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) {
-					if (i == arenaHeight + 1) throw 420;	//Colision with bottom of arena
-					else if (tempMatrix[i][k] != usedColors::backgroundColor&&tempMatrix[i][k] != usedColors::borderColor)throw 420;
-					else throw 69420;
+					if (i == arenaHeight + 1) throw 1;	//Colision with bottom of arena
+					else if (tempMatrix[i][k] != usedColors::backgroundColor&&tempMatrix[i][k] != usedColors::borderColor)throw 1;
+					else throw 0;
 				}
 				//Place block
 				if (tempMatrix[i][k] == usedColors::backgroundColor) tempMatrix[i][k] = tetrino.block[j][l];
@@ -60,18 +61,47 @@ void Arena::printBlock(iTetrino& tetrino)
 	{
 		switch (x)
 		{
-		case 69420:
+		case 0:
 			tetrino.moveToLastPos();
 			printBlock(tetrino);
 			return;
-		case 420:
+		case 1:
 			tetrino.moveToLastPos();
 			printBlock(tetrino);
 			saveMatrix();
 			tetrino.setStatic();
+	//Do poprawienia
+			{
+				srand(time(NULL));
+				switch (rand() % 6) {
+				case 0:
+					tetrino = Box();
+					break;
+				case 1:
+					tetrino = TShape();
+					break;
+				case 2:
+					tetrino = IShape();
+					break;
+				case 3:
+					tetrino = LShapeLeft();
+					break;
+				case 4:
+					tetrino = LShapeRight();
+					break;
+				case 5:
+					tetrino = ZShapeLeft();
+					break;
+				case 6:
+					tetrino = ZShapeRight();
+					break;
+				}
+				printBlock(tetrino);
+			}
+	//Do poprawienia
 			return;
 		default:
-			throw 69420;
+			throw 0;
 			break;
 		}
 	}
@@ -81,4 +111,3 @@ void Arena::saveMatrix()
 {
 	std::memcpy(Matrix, tempMatrix, sizeof(Matrix));
 }
-
