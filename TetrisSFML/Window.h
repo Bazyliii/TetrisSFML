@@ -6,7 +6,7 @@
 #include "Colors.h"
 #include <time.h>
 
-#define SIZE 25
+#define BOX_SIZE 25
 
 using namespace sf;
 using namespace std;

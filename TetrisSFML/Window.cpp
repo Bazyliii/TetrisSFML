@@ -4,9 +4,9 @@ void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
 	for (int j = 0; j < arenaHeight + 2; j++) {
 		for (int i = 0; i < arenaWidth + 2; i++) {
-			RectangleShape x(Vector2f(SIZE, SIZE));
+			RectangleShape x(Vector2f(BOX_SIZE, BOX_SIZE));
 			x.setFillColor(arena.tempMatrix[j][i]);
-			x.setPosition(Vector2f(i * SIZE, j * SIZE));
+			x.setPosition(Vector2f(i * BOX_SIZE, j * BOX_SIZE));
 			renderList[list_length++] = x;
 		}
 	}
@@ -88,7 +88,8 @@ void AppWindow::appLoop() {
 		p += 1;
 		if (p % 70 == 0) {
 			tetrino.moveDown();
-			arena.printBlock(tetrino);
+			if (!(arena.printBlock(tetrino))) 
+				window.close();
 			p = 0;
 		}
 		renderArena(renderList, list_length);

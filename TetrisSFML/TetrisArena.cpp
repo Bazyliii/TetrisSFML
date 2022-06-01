@@ -5,8 +5,12 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
-Arena::Arena()
+
+
+Arena::Arena():
+	generatorRNG(random_device()())
 {
+	gameState = true;
 	for (int i = 0; i < arenaHeight + 2; i++)
 	{
 		for (int j = 0; j < arenaWidth + 2; j++)
@@ -36,10 +40,11 @@ Arena::Arena()
 	}
 }
 
-void Arena::printBlock(iTetrino& tetrino)
+bool Arena::printBlock(iTetrino& tetrino)
 {
 	//PREPARE temp arena
-	if (tetrino.IsStatic()) return;
+	if (tetrino.IsStatic()) return true;
+	if (!gameState) return false;
 	std::memcpy(tempMatrix, Matrix, sizeof(Matrix));							//Get tempMatrix up to date
 	int arenaCenter = ((arenaWidth + 2) / 2) - (tetrino.getLength() / 2);		//Calc arena center for blocks to be placed
 	//RENDERING
@@ -60,27 +65,27 @@ void Arena::printBlock(iTetrino& tetrino)
 			}
 		}
 	}
+	//Catch collisions
 	catch (int x)
 	{
 		switch (x)
 		{
 		case 0:
 			tetrino.moveToLastPos();
-			printBlock(tetrino);
-			return;
+			return printBlock(tetrino);
 		case 1:
 			if (!tetrino.moveToLastPos()) 
 			{
-				MessageBoxA(NULL, "You lost", "Game ended!!", MB_OKCANCEL | MB_ICONEXCLAMATION);
-				return;
+				MessageBoxA(NULL, "You lost", "Game ended!!", MB_ICONEXCLAMATION);
+				gameState = false;
+				return false;
 			}
-			printBlock(tetrino);
+			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
 			//Do poprawienia
 			{
-				srand(time(NULL));
-				switch (rand() % 6) {
+				switch (generatorRNG() % 6) {
 				case 0:
 					tetrino = Box();
 					break;
@@ -103,15 +108,14 @@ void Arena::printBlock(iTetrino& tetrino)
 					tetrino = ZShapeRight();
 					break;
 				}
-				printBlock(tetrino);
+				return printBlock(tetrino);
 			}
-			//Do poprawienia
-			return;
 		default:
 			throw 0;
 			break;
 		}
 	}
+	return true;
 }
 
 void Arena::saveMatrix()

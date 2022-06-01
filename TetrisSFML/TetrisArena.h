@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Tetrino.h"
 #include "Colors.h"
+#include <random>
 #define arenaWidth 10
 #define arenaHeight 20
 
@@ -19,9 +20,11 @@ class Arena
 
 public:
 	Arena();
-	void printBlock(iTetrino& tetrino) ;
+	bool printBlock(iTetrino& tetrino) ;
 	void saveMatrix();
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];
 private:
+	std::mt19937 generatorRNG;
+	bool gameState;
 	sf::Color Matrix[arenaHeight + 2][arenaWidth + 2];
 };
