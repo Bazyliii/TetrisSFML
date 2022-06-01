@@ -1,6 +1,9 @@
 #include "TetrisArena.h"
 #include "Window.h"
 
+//Ahh win api
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
 Arena::Arena()
 {
@@ -49,7 +52,7 @@ void Arena::printBlock(iTetrino& tetrino)
 				//Collisions
 				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) {
 					if (i == arenaHeight + 1) throw 1;	//Colision with bottom of arena
-					else if (tempMatrix[i][k] != usedColors::backgroundColor&&tempMatrix[i][k] != usedColors::borderColor)throw 1;
+					else if (tempMatrix[i][k] != usedColors::backgroundColor && tempMatrix[i][k] != usedColors::borderColor) throw 1; //Colision with block in arena
 					else throw 0;
 				}
 				//Place block
@@ -66,11 +69,15 @@ void Arena::printBlock(iTetrino& tetrino)
 			printBlock(tetrino);
 			return;
 		case 1:
-			tetrino.moveToLastPos();
+			if (!tetrino.moveToLastPos()) 
+			{
+				MessageBoxA(NULL, "You lost", "Game ended!!", MB_OKCANCEL | MB_ICONEXCLAMATION);
+				return;
+			}
 			printBlock(tetrino);
 			saveMatrix();
 			tetrino.setStatic();
-	//Do poprawienia
+			//Do poprawienia
 			{
 				srand(time(NULL));
 				switch (rand() % 6) {
@@ -98,7 +105,7 @@ void Arena::printBlock(iTetrino& tetrino)
 				}
 				printBlock(tetrino);
 			}
-	//Do poprawienia
+			//Do poprawienia
 			return;
 		default:
 			throw 0;

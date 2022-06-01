@@ -113,7 +113,7 @@ void iTetrino::rotateCCW()
 	rotate();
 }
 
-void iTetrino::rotateCW() 
+void iTetrino::rotateCW()
 {
 	std::memcpy(lastblock, block, sizeof(block));
 	for (int i = 0; i < 3; i++) rotate();
@@ -126,48 +126,50 @@ void iTetrino::moveLeft()
 	Off_Y_last = Off_Y;
 }
 
-void iTetrino::moveRight() 
+void iTetrino::moveRight()
 {
 	wasRotated = false;
 	Off_X_last = Off_X++;
 	Off_Y_last = Off_Y;
 }
 
-void iTetrino::moveDown() 
+void iTetrino::moveDown()
 {
 	wasRotated = false;
 	Off_X_last = Off_X;
 	Off_Y_last = Off_Y++;
 }
 
-void iTetrino::moveToLastPos() 
+bool iTetrino::moveToLastPos()
 {
+	if (Off_X == Off_X_last && Off_Y == Off_Y_last && !wasRotated) return false; //If last pos is the same return false meaning returning failed
 	Off_X = Off_X_last;
 	Off_Y = Off_Y_last;
 	if (wasRotated) std::memcpy(block, lastblock, sizeof(lastblock));
+	return true;
 }
 
-sf::Color iTetrino::getColor() 
+sf::Color iTetrino::getColor()
 {
 	return color;
 }
 
-uint16_t iTetrino::getOff_Y() 
+uint16_t iTetrino::getOff_Y()
 {
 	return Off_Y;
 }
 
-int16_t iTetrino::getOff_X() 
+int16_t iTetrino::getOff_X()
 {
 	return Off_X;
 }
 
-int iTetrino::getLength() 
+int iTetrino::getLength()
 {
 	return length;
 }
 
-bool iTetrino::IsStatic() 
+bool iTetrino::IsStatic()
 {
 	return State;
 }

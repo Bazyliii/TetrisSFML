@@ -26,7 +26,7 @@ public:
 	void moveLeft();
 	void moveRight();
 	void moveDown();
-	void moveToLastPos();
+	bool moveToLastPos();
 	sf::Color getColor();
 	uint16_t getOff_Y();
 	int16_t getOff_X();

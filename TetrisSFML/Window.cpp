@@ -53,9 +53,9 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 		//SOMETHING ELSE
-	case Keyboard::Key::Space:
-		randomPiece();
-		break;
+	//case Keyboard::Key::Space:
+	//	randomPiece();
+	//	break;
 	default:
 		break;
 	}
@@ -97,6 +97,7 @@ void AppWindow::appLoop() {
 	}
 	delete[] renderList;
 }
+
 
 void AppWindow::randomPiece() {
 	srand(time(NULL));
