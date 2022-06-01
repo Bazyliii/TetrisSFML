@@ -75,6 +75,7 @@ ZShapeLeft::ZShapeLeft()
 
 void iTetrino::rotate()
 { // rotate by 90deg (ccw)
+	move = Move::rotation;
 	wasRotated = true;
 	Off_X_last = Off_X;
 	Off_Y_last = Off_Y;
@@ -89,6 +90,7 @@ void iTetrino::rotate()
 
 iTetrino::iTetrino()
 {
+	move = Move::none;
 	color = usedColors::backgroundColor;
 	wasRotated = false;
 	State = false;
@@ -121,6 +123,7 @@ void iTetrino::rotateCW()
 
 void iTetrino::moveLeft()
 {
+	move = Move::left;
 	wasRotated = false;
 	Off_X_last = Off_X--;
 	Off_Y_last = Off_Y;
@@ -128,6 +131,7 @@ void iTetrino::moveLeft()
 
 void iTetrino::moveRight()
 {
+	move = Move::right;
 	wasRotated = false;
 	Off_X_last = Off_X++;
 	Off_Y_last = Off_Y;
@@ -135,6 +139,7 @@ void iTetrino::moveRight()
 
 void iTetrino::moveDown()
 {
+	move = Move::down;
 	wasRotated = false;
 	Off_X_last = Off_X;
 	Off_Y_last = Off_Y++;

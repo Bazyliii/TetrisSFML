@@ -5,6 +5,15 @@
 
 class iTetrino
 {
+public:
+	enum class Move
+	{
+		left,
+		right,
+		down,
+		rotation,
+		none,
+	};
 private:
 	static const int width = 4;
 	static const int height = 4;
@@ -14,16 +23,10 @@ private:
 	int16_t Off_X;
 	uint16_t Off_Y_last;
 	int16_t Off_X_last;
+	Move move;
 	void rotate();
 public:
-	enum class move
-	{
-		left,
-		right,
-		down,
-		rotation,
-		none,
-	};
+
 	int length;
 	sf::Color color;
 	sf::Color block[height][width];
@@ -41,13 +44,9 @@ public:
 	int getLength();
 	bool IsStatic();
 	void setStatic();
-	move lastMove() 
+	Move lastMove() 
 	{
-		if (Off_Y > Off_Y_last) return move::down;
-		if (Off_X > Off_X_last) return move::right;
-		if (Off_X < Off_X_last) return move::left;
-		if (wasRotated) return move::rotation;
-		return move::none;
+		return move;
 	}
 
 
