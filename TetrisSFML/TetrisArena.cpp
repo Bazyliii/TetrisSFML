@@ -7,8 +7,8 @@
 
 
 
-Arena::Arena():
-	generatorRNG(random_device()())
+Arena::Arena() :
+	generatorRNG(random_device()()), susage(0, 5)
 {
 	gameState = true;
 	for (int i = 0; i < arenaHeight + 2; i++)
@@ -74,7 +74,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			tetrino.moveToLastPos();
 			return printBlock(tetrino);
 		case 1:
-			if (!tetrino.moveToLastPos()) 
+			if (!tetrino.moveToLastPos())
 			{
 				MessageBoxA(NULL, "You lost", "Game ended!!", MB_ICONEXCLAMATION);
 				gameState = false;
@@ -85,7 +85,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			tetrino.setStatic();
 			//Do poprawienia
 			{
-				switch (generatorRNG() % 6) {
+				switch (susage(generatorRNG)) {
 				case 0:
 					tetrino = Box();
 					break;
