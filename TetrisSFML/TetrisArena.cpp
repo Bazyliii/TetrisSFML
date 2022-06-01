@@ -55,9 +55,13 @@ bool Arena::printBlock(iTetrino& tetrino)
 			for (int k = arenaCenter + tetrino.getOff_X(), l = 0; k < arenaCenter + tetrino.getLength() + tetrino.getOff_X(); k++, l++)
 			{
 				//Collisions
-				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) {
+				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color) 
+				{
 					if (i == arenaHeight + 1) throw 1;	//Colision with bottom of arena
-					else if (tempMatrix[i][k] != usedColors::backgroundColor && tempMatrix[i][k] != usedColors::borderColor) throw 1; //Colision with block in arena
+					else if (tempMatrix[i][k] != usedColors::borderColor && tetrino.lastMove() == iTetrino::move::down)
+						throw 1; //Colision with block in arena
+					else if (tempMatrix[i][k] != usedColors::borderColor)
+						throw 2; //Colision with block in arena
 					else throw 0;
 				}
 				//Place block
@@ -109,6 +113,13 @@ bool Arena::printBlock(iTetrino& tetrino)
 					break;
 				}
 				return printBlock(tetrino);
+			}
+		case 2:
+			if (!tetrino.moveToLastPos())
+			{
+				MessageBoxA(NULL, "You lost", "Game ended!!", MB_ICONEXCLAMATION);
+				gameState = false;
+				return false;
 			}
 		default:
 			throw 0;
