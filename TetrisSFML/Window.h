@@ -4,6 +4,7 @@
 #include "TetrisArena.h"
 #include "Tetrino.h"
 #include "Colors.h"
+#include "Score.h"
 #include <time.h>
 
 #define BOX_SIZE 25
@@ -17,6 +18,7 @@ private:
 	Arena arena;
 	RenderWindow window;
 	iTetrino tetrino;
+	Score score;
 	int piece;
 	int p;
 	void renderArena(RectangleShape* renderList, int& list_length);

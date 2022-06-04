@@ -3,6 +3,7 @@
 #include <array>
 #include <SFML/Graphics.hpp>
 #include "Tetrino.h"
+#include "Score.h"
 #include "Colors.h"
 #include <random>
 #define arenaWidth 10
@@ -20,10 +21,10 @@ class Arena
 
 public:
 	Arena();
+	Score score;
 	bool printBlock(iTetrino& tetrino) ;
 	void saveMatrix();
 	void clearLine();
-	bool canClear;
 	int lineCounter[arenaHeight];
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];
 private:

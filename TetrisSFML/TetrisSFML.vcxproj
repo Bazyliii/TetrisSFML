@@ -153,12 +153,14 @@
   <ItemGroup>
     <ClCompile Include="Colors.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="Tetrino.cpp" />
     <ClCompile Include="TetrisArena.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Colors.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="Tetrino.h" />
     <ClInclude Include="TetrisArena.h" />
     <ClInclude Include="Window.h" />

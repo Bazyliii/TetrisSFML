@@ -86,6 +86,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
+			score.points += 100;
 			clearLine();
 			//Do poprawienia
 			{
@@ -139,12 +140,13 @@ void Arena::clearLine() {
 			tempMatrix[k][8] != usedColors::backgroundColor &&
 			tempMatrix[k][9] != usedColors::backgroundColor &&
 			tempMatrix[k][10] != usedColors::backgroundColor) {
-				for (int j = k; j >= 2;j--) {
-					for (int i = 1;i <= 10;i++) {
-						Matrix[j][i] = Matrix[j - 1][i];
-						tempMatrix[j][i] = tempMatrix[j - 1][i];
-					}
+			for (int j = k; j >= 2;j--) {
+				for (int i = 1;i <= 10;i++) {
+					Matrix[j][i] = Matrix[j - 1][i];
+					tempMatrix[j][i] = tempMatrix[j - 1][i];
 				}
+			}
+			score.points += 1000;
 				k++;
 			}
 		}
