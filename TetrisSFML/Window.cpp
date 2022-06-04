@@ -95,7 +95,6 @@ void AppWindow::appLoop() {
 
 		renderArena(renderList, list_length);
 		listenEvents();
-		score.showScore();
 		printArena(renderList, list_length);
 	}
 	delete[] renderList;
