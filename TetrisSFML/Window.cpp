@@ -92,6 +92,7 @@ void AppWindow::appLoop() {
 				window.close();
 			p = 0;
 		}
+
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);

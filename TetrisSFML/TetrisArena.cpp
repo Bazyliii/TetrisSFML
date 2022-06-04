@@ -86,6 +86,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
+			clearLine();
 			//Do poprawienia
 			{
 				switch (susage(generatorRNG)) {
@@ -125,3 +126,26 @@ void Arena::saveMatrix()
 {
 	std::memcpy(Matrix, tempMatrix, sizeof(Matrix));
 }
+
+void Arena::clearLine() {
+	for(int k=20;k>=2;k--){
+		if (tempMatrix[k][1] != usedColors::backgroundColor &&
+			tempMatrix[k][2] != usedColors::backgroundColor &&
+			tempMatrix[k][3] != usedColors::backgroundColor &&
+			tempMatrix[k][4] != usedColors::backgroundColor &&
+			tempMatrix[k][5] != usedColors::backgroundColor &&
+			tempMatrix[k][6] != usedColors::backgroundColor &&
+			tempMatrix[k][7] != usedColors::backgroundColor &&
+			tempMatrix[k][8] != usedColors::backgroundColor &&
+			tempMatrix[k][9] != usedColors::backgroundColor &&
+			tempMatrix[k][10] != usedColors::backgroundColor) {
+				for (int j = k; j >= 2;j--) {
+					for (int i = 1;i <= 10;i++) {
+						Matrix[j][i] = Matrix[j - 1][i];
+						tempMatrix[j][i] = tempMatrix[j - 1][i];
+					}
+				}
+				k++;
+			}
+		}
+	}
