@@ -37,6 +37,7 @@ void Score::addToScore(int x)
 	points += x;
 }
 
-void Score::saveScore(string nick = "chuj") {
-
+void Score::saveScore(string nick = "chuj") 
+{
+	cout << "jebanie twojej starej na basenie" << endl;
 }
