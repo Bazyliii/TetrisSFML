@@ -11,4 +11,8 @@ public:
 	static int getScore();
 	static void setScore(int x);
 	static void addToScore(int x);
+	static void saveScore(string nick) 
+	{
+
+	}
 };
