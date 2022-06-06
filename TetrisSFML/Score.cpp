@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "Window.h"
+#include <fstream>
 
 int Score::points = 0;
 sf::Font Score::font;
@@ -37,6 +38,11 @@ void Score::addToScore(int x)
 	points += x;
 }
 
-void Score::saveScore(string nick = "chuj") {
+void Score::saveScore(int points)
+{
+	fstream file;
+	file.open("score.txt", ios::out);
+	file << points << endl;
+	file.close();
 
 }
