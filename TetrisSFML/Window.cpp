@@ -84,15 +84,22 @@ void AppWindow::appLoop() {
 	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
 	while (window.isOpen())
 	{
+		sf::Font font;
+		font.loadFromFile("fonts/Gameplay.ttf");
+		sf::Text text;
+		text.setFont(font);
+		text.setString("Chdsfsdfsdfsdfsdfuj");
+		text.setCharacterSize(24);
+		text.setFillColor(sf::Color::Red);
+		window.draw(text);
 		int list_length = 0;
 		p += 1;
 		if (p % 70 == 0) {
 			tetrino.moveDown();
 			if (!(arena.printBlock(tetrino))) 
-				window.close();
+			window.close();
 			p = 0;
 		}
-
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);
