@@ -1,5 +1,6 @@
 #include "Window.h"
 
+
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
 	if (!arena.getGameState()) return;
@@ -21,6 +22,9 @@ void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 	for (int i = 0; i < list_length; i++) {
 		window.draw(renderList[i]);
 	}
+	if (chuj) {
+		window.draw(GameOver::getGameOverAsText());
+	}
 	window.draw(Score::getScoreAsText());
 	window.display();
 }
@@ -28,7 +32,6 @@ void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 void AppWindow::handleKeyPressed(Event event) {
 	switch (event.key.code)
 	{
-
 		//ROTATION
 	case Keyboard::Key::Q:
 		tetrino.rotateCCW();
@@ -91,6 +94,7 @@ AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
 	p = 0;
+	chuj = false;
 	arena = Arena();
 	arena.renderRandomPiece(tetrino);
 	window.setFramerateLimit(144);
@@ -107,10 +111,9 @@ void AppWindow::appLoop() {
 			arena.printBlock(tetrino);
 			p = 0;
 		}
-
-		if (!arena.getGameState() || (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)))
+		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
 		{
-			loseScreen();
+			chuj = true;
 			//When game is lost:
 		}
 		renderArena(renderList, list_length);
@@ -120,14 +123,3 @@ void AppWindow::appLoop() {
 	delete[] renderList;
 }
 
-
-void AppWindow::loseScreen() {
-	sf::Font font;
-	font.loadFromFile("fonts\\Gameplay.ttf");
-	sf::Text text;
-	text.setFont(font);
-	text.setString("PRZEJEBA£EŒ");
-	text.setCharacterSize(54);
-	text.setPosition(320, 20);
-	text.setFillColor(usedColors::TextColor);
-}

@@ -5,6 +5,7 @@
 #include "Tetrino.h"
 #include "Colors.h"
 #include "Score.h"
+#include "GameOver.h"
 #include <time.h>
 
 #define BOX_SIZE 25
@@ -19,7 +20,9 @@ private:
 	RenderWindow window;
 	iTetrino tetrino;
 	Score score;
+	GameOver gameover;
 	int p;
+	bool chuj;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
 	void handleKeyPressed(Event event);
@@ -28,5 +31,4 @@ private:
 public:
 	AppWindow();
 	void appLoop();
-	void loseScreen();
 };

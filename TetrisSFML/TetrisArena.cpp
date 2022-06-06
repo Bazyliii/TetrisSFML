@@ -79,7 +79,6 @@ bool Arena::printBlock(iTetrino& tetrino)
 		case 1:
 			if (!tetrino.moveToLastPos())
 			{
-				MessageBoxA(NULL, "You lost", "Game ended!!", MB_ICONEXCLAMATION);
 				gameState = false;
 				return false;
 			}
