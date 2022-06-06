@@ -19,7 +19,6 @@ private:
 	RenderWindow window;
 	iTetrino tetrino;
 	Score score;
-	int piece;
 	int p;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
@@ -27,13 +26,6 @@ private:
 	void listenEvents();
 	
 public:
-	void randomPiece();
-	AppWindow() :
-		window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
-	{
-		arena = Arena();
-		randomPiece();
-		window.setFramerateLimit(144);
-	}
+	AppWindow();
 	void appLoop();
 };

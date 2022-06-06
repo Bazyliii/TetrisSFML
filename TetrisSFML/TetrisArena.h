@@ -15,7 +15,8 @@ class Arena
 {
 public:
 	Arena();
-	bool printBlock(iTetrino& tetrino) ;
+	bool printBlock(iTetrino& tetrino);
+	bool renderRandomPiece(iTetrino& tetrino);
 	void saveMatrix();
 	void clearLine();
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];

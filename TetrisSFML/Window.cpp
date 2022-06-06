@@ -54,8 +54,11 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::Space:
-		tetrino.moveDown();
-		while (!arena.printBlock(tetrino)){ tetrino.moveDown(); }
+		while (!tetrino.IsStatic())
+		{
+			tetrino.moveDown();
+			arena.printBlock(tetrino);
+		}
 		break;
 	default:
 		break;
@@ -81,6 +84,15 @@ void AppWindow::listenEvents()
 	}
 }
 
+AppWindow::AppWindow() :
+	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
+{
+	p = 0;
+	arena = Arena();
+	arena.renderRandomPiece(tetrino);
+	window.setFramerateLimit(144);
+}
+
 void AppWindow::appLoop() {
 	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
 	while (window.isOpen())
@@ -89,43 +101,13 @@ void AppWindow::appLoop() {
 		p += 1;
 		if (p % 70 == 0) {
 			tetrino.moveDown();
-			if (!(arena.printBlock(tetrino))) 
-			window.close();
+			arena.printBlock(tetrino);
 			p = 0;
 		}
+		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)) window.close();
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);
 	}
 	delete[] renderList;
-}
-
-
-void AppWindow::randomPiece() {
-	srand(time(NULL));
-	piece = rand() % 6;
-	switch (piece) {
-	case 0:
-		tetrino = Box();
-		break;
-	case 1:
-		tetrino = TShape();
-		break;
-	case 2:
-		tetrino = IShape();
-		break;
-	case 3:
-		tetrino = LShapeLeft();
-		break;
-	case 4:
-		tetrino = LShapeRight();
-		break;
-	case 5:
-		tetrino = ZShapeLeft();
-		break;
-	case 6:
-		tetrino = ZShapeRight();
-		break;
-	}
-	arena.printBlock(tetrino);
 }
