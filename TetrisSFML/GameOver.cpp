@@ -31,3 +31,13 @@ sf::Text GameOver::getGameOverScoreAsText() {
 	score.setFillColor(usedColors::TextColor);
 	return score;
 }
+
+sf::Text GameOver::getUserInputAsText(string nickname) {
+	sf::Text nick;
+	nick.setFont(font);
+	nick.setString(nickname);
+	nick.setCharacterSize(42);
+	nick.setPosition(18, 290);
+	nick.setFillColor(usedColors::TextColor);
+	return nick;
+}

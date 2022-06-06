@@ -22,6 +22,7 @@ private:
 	Score score;
 	GameOver gameover;
 	int p;
+	string nickname;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
 	void handleKeyPressed(Event event);

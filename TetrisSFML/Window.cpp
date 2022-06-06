@@ -82,6 +82,18 @@ void AppWindow::listenEvents()
 			break;
 		case Event::KeyPressed:
 			handleKeyPressed(event);
+
+			if (!arena.getGameState()) {
+				if (event.type == Event::TextEntered) {
+					if (event.text.unicode < 128) {
+						nickname += static_cast<char>(event.text.unicode);				
+					}
+				}
+			}
+
+
+
+
 			break;
 		default:
 			break;
@@ -120,6 +132,7 @@ void AppWindow::appLoop() {
 		if (!arena.getGameState()) {
 			window.clear();
 			window.draw(GameOver::getGameOverAsText());
+			window.draw(GameOver::getUserInputAsText(nickname));
 			window.draw(GameOver::getGameOverScoreAsText());
 			window.display();
 		}
@@ -129,4 +142,3 @@ void AppWindow::appLoop() {
 	}
 	delete[] renderList;
 }
-
