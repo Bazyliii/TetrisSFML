@@ -58,8 +58,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 				if (tempMatrix[i][k] != usedColors::backgroundColor && tetrino.block[j][l] == tetrino.color)
 				{
 					iTetrino::Move lastMove = tetrino.lastMove();
-					if (i == arenaHeight + 1) throw 1;	//Colision with bottom of arena
-					else if (tempMatrix[i][k] != usedColors::borderColor && (lastMove == iTetrino::Move::down || lastMove == iTetrino::Move::none))
+					if (lastMove == iTetrino::Move::down || lastMove == iTetrino::Move::none)
 						throw 1; //Colision with block in arena
 					else throw 0;
 				}

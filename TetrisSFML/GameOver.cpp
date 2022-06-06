@@ -32,7 +32,7 @@ sf::Text GameOver::getGameOverScoreAsText() {
 	return score;
 }
 
-sf::Text GameOver::getUserInputAsText(string nickname) {
+sf::Text GameOver::getUserInputAsText(std::string nickname) {
 	sf::Text nick;
 	nick.setFont(font);
 	nick.setString(nickname);
