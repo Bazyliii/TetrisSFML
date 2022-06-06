@@ -11,4 +11,5 @@ public:
 	static const sf::Color LShapeLeftColor;
 	static const sf::Color ZShapeRightColor;
 	static const sf::Color ZShapeLeftColor;
+	static const sf::Color TextColor;
 };

@@ -9,3 +9,4 @@ const sf::Color usedColors::LShapeRightColor(244, 67, 54);
 const sf::Color usedColors::LShapeLeftColor(48, 79, 254);
 const sf::Color usedColors::ZShapeRightColor(255, 61, 0);
 const sf::Color usedColors::ZShapeLeftColor(255, 255, 0);
+const sf::Color usedColors::TextColor(255, 0, 0);
