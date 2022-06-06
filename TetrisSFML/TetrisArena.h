@@ -13,18 +13,11 @@
 
 class Arena
 {
-
-	// Arena matrix: 
-	// 0 <-- blank space
-	// -1 <-- border
-	// 1,inf <-- blocks id's
-
 public:
 	Arena();
 	bool printBlock(iTetrino& tetrino) ;
 	void saveMatrix();
 	void clearLine();
-	int lineCounter[arenaHeight];
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];
 private:
 	std::mt19937 generatorRNG;
