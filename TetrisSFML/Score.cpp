@@ -15,9 +15,10 @@ sf::Text Score::getScoreAsText()
 {
 	sf::Text text;
 	text.setFont(font);
-	text.setString("Chdsfsdfsdfsdfsdfuj");
+	text.setString(to_string(points));
 	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::Red);
+	text.setPosition(320, 20);
+	text.setFillColor(usedColors::TextColor);
 	return text;
 }
 
