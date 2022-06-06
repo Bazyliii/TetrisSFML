@@ -22,7 +22,6 @@ private:
 	Score score;
 	GameOver gameover;
 	int p;
-	bool chuj;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
 	void handleKeyPressed(Event event);

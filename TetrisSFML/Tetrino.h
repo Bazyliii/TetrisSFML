@@ -26,7 +26,6 @@ private:
 	Move move;
 	void rotate();
 public:
-
 	int length;
 	sf::Color color;
 	sf::Color block[height][width];

@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#define TETRINO_SPEED 220
+#define WINDOW_FPS 144
 
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
@@ -21,9 +23,6 @@ void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 	//rysowanie
 	for (int i = 0; i < list_length; i++) {
 		window.draw(renderList[i]);
-	}
-	if (chuj) {
-		window.draw(GameOver::getGameOverAsText());
 	}
 	window.draw(Score::getScoreAsText());
 	window.display();
@@ -94,31 +93,39 @@ AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
 	p = 0;
-	chuj = false;
 	arena = Arena();
 	arena.renderRandomPiece(tetrino);
-	window.setFramerateLimit(144);
+	window.setFramerateLimit(WINDOW_FPS);
 }
 
 void AppWindow::appLoop() {
 	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
+
+	sf::Clock clock;
+	clock.restart();
 	while (window.isOpen())
 	{
 		int list_length = 0;
-		p += 1;
-		if (p % 70 == 0) {
+		if (clock.getElapsedTime().asMilliseconds() >= TETRINO_SPEED) {
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
-			p = 0;
+			clock.restart();
 		}
 		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
 		{
-			chuj = true;
 			//When game is lost:
 		}
 		renderArena(renderList, list_length);
 		listenEvents();
-		printArena(renderList, list_length);
+		if (!arena.getGameState()) {
+			window.clear();
+			window.draw(GameOver::getGameOverAsText());
+			window.draw(GameOver::getGameOverScoreAsText());
+			window.display();
+		}
+		else {
+			printArena(renderList, list_length);
+		}
 	}
 	delete[] renderList;
 }
