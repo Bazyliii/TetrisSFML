@@ -125,18 +125,15 @@ void AppWindow::appLoop() {
 		}
 		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
 		{
-			//When game is lost:
-		}
-		renderArena(renderList, list_length);
-		listenEvents();
-		if (!arena.getGameState()) {
 			window.clear();
 			window.draw(GameOver::getGameOverAsText());
 			window.draw(GameOver::getUserInputAsText(nickname));
 			window.draw(GameOver::getGameOverScoreAsText());
 			window.display();
 		}
-		else {
+		renderArena(renderList, list_length);
+		listenEvents();
+		if (arena.getGameState()) {
 			printArena(renderList, list_length);
 		}
 	}
