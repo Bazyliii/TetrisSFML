@@ -165,3 +165,8 @@ void Arena::clearLine()
 		k++;
 	}
 }
+
+bool Arena::getGameState()
+{
+	return gameState;
+}

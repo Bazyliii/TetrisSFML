@@ -19,6 +19,7 @@ public:
 	bool renderRandomPiece(iTetrino& tetrino);
 	void saveMatrix();
 	void clearLine();
+	bool getGameState();
 	sf::Color tempMatrix[arenaHeight + 2][arenaWidth + 2];
 private:
 	std::mt19937 generatorRNG;

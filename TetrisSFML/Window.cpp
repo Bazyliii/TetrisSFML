@@ -26,6 +26,7 @@ void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 void AppWindow::handleKeyPressed(Event event) {
 	switch (event.key.code)
 	{
+
 		//ROTATION
 	case Keyboard::Key::Q:
 		tetrino.rotateCCW();
@@ -54,7 +55,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::Space:
-		while (!tetrino.IsStatic())
+		while (!tetrino.IsStatic() && arena.getGameState())
 		{
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
@@ -104,7 +105,13 @@ void AppWindow::appLoop() {
 			arena.printBlock(tetrino);
 			p = 0;
 		}
-		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)) window.close();
+
+		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
+		{
+			//When game is lost:
+			//window.close();
+		}
+
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);
