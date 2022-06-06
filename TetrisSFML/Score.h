@@ -1,8 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
-class Score {
+static class Score {
+private:
+	static int points;
+	static sf::Font font;
 public:
-	int points;	
-	void showScore();
+	Score();
+	static sf::Text getScoreAsText();
+	static int getScore();
+	static void setScore(int x);
+	static void addToScore(int x);
 };

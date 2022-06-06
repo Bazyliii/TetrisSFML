@@ -21,7 +21,6 @@ class Arena
 
 public:
 	Arena();
-	Score score;
 	bool printBlock(iTetrino& tetrino) ;
 	void saveMatrix();
 	void clearLine();

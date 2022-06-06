@@ -86,7 +86,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
-			score.points += 100;
+			Score::addToScore(100);
 			clearLine();
 			//Do poprawienia
 			{
@@ -154,7 +154,7 @@ void Arena::clearLine()
 				tempMatrix[j][i] = tempMatrix[j - 1][i];
 			}
 		}
-		score.points += 1000;
+		Score::addToScore(1000);
 		k++;
 	}
 }

@@ -19,14 +19,7 @@ void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 	for (int i = 0; i < list_length; i++) {
 		window.draw(renderList[i]);
 	}
-	sf::Font font;
-	font.loadFromFile("fonts\\Gameplay.ttf");
-	sf::Text text;
-	text.setFont(font);
-	text.setString("Chdsfsdfsdfsdfsdfuj");
-	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::Red);
-	window.draw(text);
+	window.draw(Score::getScoreAsText());
 	window.display();
 }
 
@@ -61,8 +54,9 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::Space:
-	//	randomPiece();
-	//	break;
+		tetrino.moveDown();
+		while (!arena.printBlock(tetrino)){ tetrino.moveDown(); }
+		break;
 	default:
 		break;
 	}
