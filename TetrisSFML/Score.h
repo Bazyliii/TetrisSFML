@@ -11,8 +11,5 @@ public:
 	static int getScore();
 	static void setScore(int x);
 	static void addToScore(int x);
-	static void saveScore(std::string nick) 
-	{
-
-	}
+	static void saveScore(std::string nick);
 };

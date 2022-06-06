@@ -36,3 +36,7 @@ void Score::addToScore(int x)
 {
 	points += x;
 }
+
+void Score::saveScore(string nick = "chuj") {
+
+}
