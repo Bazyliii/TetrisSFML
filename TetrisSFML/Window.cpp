@@ -2,6 +2,7 @@
 
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
+	if (!arena.getGameState()) return;
 	for (int j = 0; j < arenaHeight + 2; j++) {
 		for (int i = 0; i < arenaWidth + 2; i++) {
 			RectangleShape x(Vector2f(BOX_SIZE, BOX_SIZE));
@@ -14,6 +15,7 @@ void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 
 void AppWindow::printArena(RectangleShape* renderList, int& list_length)
 {
+	if (!arena.getGameState()) return;
 	window.clear();
 	//rysowanie
 	for (int i = 0; i < list_length; i++) {
@@ -106,12 +108,12 @@ void AppWindow::appLoop() {
 			p = 0;
 		}
 
-		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
+		if (!arena.getGameState() || (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)))
 		{
 			//When game is lost:
 			//window.close();
+			int i = 1;
 		}
-
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);

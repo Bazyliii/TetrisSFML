@@ -75,6 +75,7 @@ ZShapeLeft::ZShapeLeft()
 
 void iTetrino::rotate()
 { // rotate by 90deg (ccw)
+	if (IsStatic()) return;
 	move = Move::rotation;
 	wasRotated = true;
 	Off_X_last = Off_X;
@@ -123,6 +124,7 @@ void iTetrino::rotateCW()
 
 void iTetrino::moveLeft()
 {
+	if (IsStatic()) return;
 	move = Move::left;
 	wasRotated = false;
 	Off_X_last = Off_X--;
@@ -131,6 +133,7 @@ void iTetrino::moveLeft()
 
 void iTetrino::moveRight()
 {
+	if (IsStatic()) return;
 	move = Move::right;
 	wasRotated = false;
 	Off_X_last = Off_X++;
@@ -139,6 +142,7 @@ void iTetrino::moveRight()
 
 void iTetrino::moveDown()
 {
+	if (IsStatic()) return;
 	move = Move::down;
 	wasRotated = false;
 	Off_X_last = Off_X;
@@ -147,6 +151,7 @@ void iTetrino::moveDown()
 
 bool iTetrino::moveToLastPos()
 {
+	if (IsStatic()) return false;
 	if (Off_X == Off_X_last && Off_Y == Off_Y_last && !wasRotated) return false; //If last pos is the same return false meaning returning failed
 	Off_X = Off_X_last;
 	Off_Y = Off_Y_last;
