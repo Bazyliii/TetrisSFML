@@ -110,13 +110,24 @@ void AppWindow::appLoop() {
 
 		if (!arena.getGameState() || (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)))
 		{
+			loseScreen();
 			//When game is lost:
-			//window.close();
-			int i = 1;
 		}
 		renderArena(renderList, list_length);
 		listenEvents();
 		printArena(renderList, list_length);
 	}
 	delete[] renderList;
+}
+
+
+void AppWindow::loseScreen() {
+	sf::Font font;
+	font.loadFromFile("fonts\\Gameplay.ttf");
+	sf::Text text;
+	text.setFont(font);
+	text.setString("PRZEJEBA£EŒ");
+	text.setCharacterSize(54);
+	text.setPosition(320, 20);
+	text.setFillColor(usedColors::TextColor);
 }

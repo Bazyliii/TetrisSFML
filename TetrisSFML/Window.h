@@ -28,4 +28,5 @@ private:
 public:
 	AppWindow();
 	void appLoop();
+	void loseScreen();
 };
