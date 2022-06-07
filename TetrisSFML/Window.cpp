@@ -52,8 +52,13 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::W:
-		tetrino.rotateCW();
-		arena.printBlock(tetrino);
+		if (getGameState() == GameState::MainMenu) {
+
+		}
+		else {
+			tetrino.rotateCW();
+			arena.printBlock(tetrino);
+		}
 		break;
 
 		//MOVEMENT
@@ -66,8 +71,13 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::S:
-		tetrino.moveDown();
-		arena.printBlock(tetrino);
+		if (getGameState() == GameState::MainMenu) {
+
+		}
+		else {
+			tetrino.moveDown();
+			arena.printBlock(tetrino);
+		}
 		break;
 	case Keyboard::Key::Space:
 		while (!tetrino.IsStatic() && arena.getGameState())
@@ -83,6 +93,9 @@ void AppWindow::handleKeyPressed(Event event) {
 		}
 		break;
 	case Keyboard::Key::Enter:
+		if (getGameState() == GameState::MainMenu) {
+
+		}
 		if (getGameState()==GameState::GameLost)
 		{
 			Score::saveScore(nickname);
@@ -157,8 +170,20 @@ bool AppWindow::appLoop()
 	switch (gameState)
 	{
 	case GameState::MainMenu:
-		initBeforeGame();
-		setGameState(GameState::Game); //Tu main meneu
+		//initBeforeGame();
+		//setGameState(GameState::Game); //Tu main meneu
+		listenEvents();
+		window.clear();
+		window.draw(MainMenu::T());
+		window.draw(MainMenu::E());
+		window.draw(MainMenu::TT());
+		window.draw(MainMenu::R());
+		window.draw(MainMenu::I());
+		window.draw(MainMenu::S());
+		window.draw(MainMenu::PlayButton());
+		window.draw(MainMenu::HighScoreButton());
+		window.draw(MainMenu::QuitButton());
+		window.display();
 		break;
 	case GameState::Game:
 		gameLoop();

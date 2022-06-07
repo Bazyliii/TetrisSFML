@@ -14,4 +14,7 @@ public:
 	static sf::Text R();
 	static sf::Text I();
 	static sf::Text S();
+	static sf::Text PlayButton();
+	static sf::Text HighScoreButton();
+	static sf::Text QuitButton();
 };
