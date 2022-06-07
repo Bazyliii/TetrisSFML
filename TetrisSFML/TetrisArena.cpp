@@ -10,7 +10,6 @@
 Arena::Arena() :
 	generatorRNG(random_device()()), susage(0, 5)
 {
-	gameState = true;
 	for (int i = 0; i < arenaHeight + 2; i++)
 	{
 		for (int j = 0; j < arenaWidth + 2; j++)
@@ -44,7 +43,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 {
 	//PREPARE temp arena
 	if (tetrino.IsStatic()) return true;
-	if (!gameState) return false;
+	if (!getGameState()) return false;
 	std::memcpy(tempMatrix, Matrix, sizeof(Matrix));							//Get tempMatrix up to date
 	int arenaCenter = ((arenaWidth + 2) / 2) - (tetrino.getLength() / 2);		//Calc arena center for blocks to be placed
 	//RENDERING
@@ -78,7 +77,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 		case 1:
 			if (!tetrino.moveToLastPos())
 			{
-				gameState = false;
+				AppWindow::setGameState(GameState::GameLost);
 				return false;
 			}
 			if (!printBlock(tetrino)) return false;
@@ -151,9 +150,9 @@ void Arena::clearLine()
 			else return;
 		}
 
-		for (int j = k; j >= 2; j--) 
+		for (int j = k; j >= 2; j--)
 		{
-			for (int i = 1; i <= 10; i++) 
+			for (int i = 1; i <= 10; i++)
 			{
 				Matrix[j][i] = Matrix[j - 1][i];
 				tempMatrix[j][i] = tempMatrix[j - 1][i];
@@ -166,5 +165,5 @@ void Arena::clearLine()
 
 bool Arena::getGameState()
 {
-	return gameState;
+	return AppWindow::getGameState() == GameState::Game ? true : false;
 }

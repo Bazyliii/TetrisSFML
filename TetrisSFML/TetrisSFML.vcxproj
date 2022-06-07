@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="Colors.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Tetrino.h" />

@@ -8,6 +8,7 @@
 #include "GameOver.h"
 #include <time.h>
 #include "MainMenu.h"
+#include "GameState.h"
 
 #define BOX_SIZE 25
 
@@ -18,11 +19,11 @@ class AppWindow
 {
 private:
 	Arena arena;
+	static GameState gameState;
 	RenderWindow window;
 	iTetrino tetrino;
 	Score score;
 	GameOver gameover;
-	int p;
 	string nickname;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
@@ -32,4 +33,6 @@ private:
 public:
 	AppWindow();
 	void appLoop();
+	static GameState getGameState();
+	static void setGameState(GameState _gameState);
 };

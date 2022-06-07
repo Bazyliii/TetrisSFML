@@ -104,7 +104,7 @@ void AppWindow::listenEvents()
 AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
-	p = 0;
+	gameState = GameState::Game;
 	arena = Arena();
 	arena.renderRandomPiece(tetrino);
 	window.setFramerateLimit(WINDOW_FPS);
@@ -140,4 +140,14 @@ void AppWindow::appLoop() {
 		}
 	}
 	delete[] renderList;
+}
+
+GameState AppWindow::getGameState()
+{
+	return gameState;
+}
+
+void AppWindow::setGameState(GameState _gameState)
+{
+	gameState = _gameState;
 }

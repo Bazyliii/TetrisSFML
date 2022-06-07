@@ -6,6 +6,7 @@
 #include "Score.h"
 #include "Colors.h"
 #include <random>
+#include "GameState.h"
 #define arenaWidth 10
 #define arenaHeight 20
 
@@ -24,6 +25,5 @@ public:
 private:
 	std::mt19937 generatorRNG;
 	std::uniform_int_distribution<std::mt19937::result_type> susage;
-	bool gameState;
 	sf::Color Matrix[arenaHeight + 2][arenaWidth + 2];
 };
