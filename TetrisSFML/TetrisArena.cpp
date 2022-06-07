@@ -1,12 +1,6 @@
 #include "TetrisArena.h"
 #include "Window.h"
 
-//Ahh win api
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-
-
 Arena::Arena() :
 	generatorRNG(random_device()()), susage(0, 5)
 {
