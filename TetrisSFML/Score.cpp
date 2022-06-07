@@ -10,6 +10,7 @@ sf::Font Score::font;
 void Score::init()
 {
 	font.loadFromFile("fonts\\Gameplay.ttf");
+	points = 0;
 }
 
 sf::Text Score::getScoreAsText()

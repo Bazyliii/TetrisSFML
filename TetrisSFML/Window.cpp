@@ -5,6 +5,15 @@
 
 GameState AppWindow::gameState = GameState::MainMenu;
 
+void AppWindow::initBeforeGame()
+{
+	nickname = "";
+	Score::init();
+	GameOver::init();
+	arena = Arena();
+	arena.renderRandomPiece(tetrino);
+}
+
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
 	if (!arena.getGameState()) return;
@@ -138,10 +147,8 @@ void AppWindow::gameLoop()
 AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
-	Score::init();
-	GameOver::init();
-	arena = Arena();
-	arena.renderRandomPiece(tetrino);
+	MainMenu::init();
+	initBeforeGame();
 	window.setFramerateLimit(WINDOW_FPS);
 }
 
@@ -150,7 +157,7 @@ bool AppWindow::appLoop()
 	switch (gameState)
 	{
 	case GameState::MainMenu:
-		arena = Arena();
+		initBeforeGame();
 		setGameState(GameState::Game); //Tu main meneu
 		break;
 	case GameState::Game:

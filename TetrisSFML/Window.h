@@ -23,6 +23,7 @@ private:
 	RenderWindow window;
 	iTetrino tetrino;
 	string nickname;
+	void initBeforeGame();
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
 	void handleKeyPressed(Event event);
