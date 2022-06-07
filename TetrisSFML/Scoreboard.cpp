@@ -9,11 +9,11 @@ void Scoreboard::init() {
 
 sf::Text Scoreboard::getScoreboardAsText()
 {
-	sf::Text text;
-	text.setFont(font);
-	text.setString("Gowno");
-	text.setCharacterSize(90);
-	text.setPosition((500 / 2) - (text.getGlobalBounds().width / 2), 180);
-	text.setFillColor(usedColors::TextColor);
-	return text;
+	sf::Text scoreboard;
+	scoreboard.setFont(font);
+	scoreboard.setString("Best scores: \n chuj 20000");
+	scoreboard.setCharacterSize(30);
+	scoreboard.setPosition((500 / 2) - (scoreboard.getGlobalBounds().width / 2), 20);
+	scoreboard.setFillColor(usedColors::TextColor);
+	return scoreboard;
 }
