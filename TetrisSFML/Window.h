@@ -7,6 +7,7 @@
 #include "Score.h"
 #include "GameOver.h"
 #include <time.h>
+#include "MainMenu.h"
 
 #define BOX_SIZE 25
 
@@ -20,7 +21,6 @@ private:
 	RenderWindow window;
 	iTetrino tetrino;
 	Score score;
-	GameOver gameover;
 	int p;
 	string nickname;
 	void renderArena(RectangleShape* renderList, int& list_length);
