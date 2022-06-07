@@ -16,7 +16,7 @@ sf::Text Score::getScoreAsText()
 {
 	sf::Text text;
 	text.setFont(font);
-	text.setString(to_string(points));
+	text.setString("Score: \n" + to_string(points));
 	text.setCharacterSize(24);
 	text.setPosition(320, 20);
 	text.setFillColor(usedColors::TextColor);
