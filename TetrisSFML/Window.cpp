@@ -223,6 +223,10 @@ bool AppWindow::appLoop()
 		window.display();
 		break;
 	case GameState::ScorePeek:
+		listenEvents();
+		window.clear();
+		window.draw(Scoreboard::getScoreboardAsText());
+		window.display();
 		break;
 	}
 	return window.isOpen();

@@ -1,8 +1,4 @@
 #include "GameOver.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Main.hpp>
-#include "Window.h"
-#include "Score.h"
 
 sf::Font GameOver::font;
 
@@ -25,7 +21,7 @@ sf::Text GameOver::getGameOverAsText()
 sf::Text GameOver::getGameOverScoreAsText() {
 	sf::Text score;
 	score.setFont(font);
-	score.setString("Score: " + to_string(Score::getScore()));
+	score.setString("Score: " + std::to_string(Score::getScore()));
 	score.setCharacterSize(42);
 	score.setPosition(18, 290);
 	score.setFillColor(usedColors::TextColor);

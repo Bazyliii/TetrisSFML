@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "fileIO.h"
+#include "Colors.h"
+#include <fstream>
 
 class Score
 {

@@ -1,8 +1,5 @@
 #include "Score.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Main.hpp>
-#include "Window.h"
-#include <fstream>
+
 
 int Score::points = 0;
 sf::Font Score::font;
@@ -17,7 +14,7 @@ sf::Text Score::getScoreAsText()
 {
 	sf::Text text;
 	text.setFont(font);
-	text.setString("Score: \n" + to_string(points));
+	text.setString("Score: \n" + std::to_string(points));
 	text.setCharacterSize(24);
 	text.setPosition(320, 20);
 	text.setFillColor(usedColors::TextColor);

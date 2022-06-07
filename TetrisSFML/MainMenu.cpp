@@ -1,8 +1,6 @@
-#include "GameOver.h"
-#include <SFML/Graphics.hpp>
-#include <SFML/Main.hpp>
+
 #include "MainMenu.h"
-#include "Colors.h"
+
 #define PRZESUNIECIE 30
 
 #define FONT_SIZE 90
