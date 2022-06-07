@@ -1,6 +1,6 @@
 #include "Window.h"
 
-#define TETRINO_SPEED 220
+#define TETRINO_SPEED 620
 #define WINDOW_FPS 144
 
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
@@ -82,18 +82,12 @@ void AppWindow::listenEvents()
 			break;
 		case Event::KeyPressed:
 			handleKeyPressed(event);
-
-			if (!arena.getGameState()) {
-				if (event.type == Event::TextEntered) {
-					if (event.text.unicode < 128) {
-						nickname += static_cast<char>(event.text.unicode);				
-					}
-				}
+			break;
+		case Event::TextEntered:
+			if (!arena.getGameState() && event.text.unicode < 128)
+			{
+				nickname += static_cast<char>(event.text.unicode);
 			}
-
-
-
-
 			break;
 		default:
 			break;
@@ -118,12 +112,19 @@ void AppWindow::appLoop() {
 	while (window.isOpen())
 	{
 		int list_length = 0;
-		if (clock.getElapsedTime().asMilliseconds() >= TETRINO_SPEED) {
+		if (clock.getElapsedTime().asMilliseconds() >= TETRINO_SPEED)
+		{
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
 			clock.restart();
 		}
 		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
+		{
+			//When game is lost:
+		}
+		renderArena(renderList, list_length);
+		listenEvents();
+		if (!arena.getGameState())
 		{
 			window.clear();
 			window.draw(GameOver::getGameOverAsText());
@@ -131,9 +132,8 @@ void AppWindow::appLoop() {
 			window.draw(GameOver::getGameOverScoreAsText());
 			window.display();
 		}
-		renderArena(renderList, list_length);
-		listenEvents();
-		if (arena.getGameState()) {
+		else
+		{
 			printArena(renderList, list_length);
 		}
 	}
