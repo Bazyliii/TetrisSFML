@@ -52,6 +52,9 @@ public:
 	//Main AppWindow loop
 	bool appLoop();
 	//Returns state of the game of enum type GameState
+	sf::Color playcolor;
+	sf::Color scorecolor;
+	sf::Color quitcolor;
 	static GameState getGameState();
 	//Sets state of the game to any of GameState enum type
 	static void setGameState(GameState _gameState);

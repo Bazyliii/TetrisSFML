@@ -81,32 +81,32 @@ sf::Text MainMenu::S()
 	return S;
 }
 
-sf::Text MainMenu::PlayButton() {
+sf::Text MainMenu::PlayButton(sf::Color color) {
 	sf::Text playbutton;
 	playbutton.setFont(font);
 	playbutton.setString("PLAY");
 	playbutton.setCharacterSize(66);
 	playbutton.setPosition((500 / 2) - (playbutton.getGlobalBounds().width / 2), 180+ PRZESUNIECIE);
-	playbutton.setFillColor(usedColors::BoxColor);
+	playbutton.setFillColor(color);
 	return playbutton;
 }
 
-sf::Text MainMenu::HighScoreButton() {
+sf::Text MainMenu::HighScoreButton(sf::Color color) {
 	sf::Text highscore;
 	highscore.setFont(font);
 	highscore.setString("HIGHSCORES");
 	highscore.setCharacterSize(66);
 	highscore.setPosition((500/2) - (highscore.getGlobalBounds().width/2), 275+ PRZESUNIECIE);
-	highscore.setFillColor(usedColors::BoxColor);
+	highscore.setFillColor(color);
 	return highscore;
 }
 
-sf::Text MainMenu::QuitButton() {
+sf::Text MainMenu::QuitButton(sf::Color color) {
 	sf::Text quit;
 	quit.setFont(font);
 	quit.setString("QUIT");
 	quit.setCharacterSize(66);
 	quit.setPosition((500 / 2) - (quit.getGlobalBounds().width / 2), 370+PRZESUNIECIE);
-	quit.setFillColor(usedColors::BoxColor);
+	quit.setFillColor(color);
 	return quit;
 }
