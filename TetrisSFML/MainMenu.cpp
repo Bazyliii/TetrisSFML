@@ -8,10 +8,11 @@
 sf::Font MainMenu::font;
 
 
-MainMenu::MainMenu()
+void MainMenu::init()
 {
 	font.loadFromFile("fonts\\Gameplay.ttf");
 }
+
 sf::Text MainMenu::T()
 {
 	sf::Text T;

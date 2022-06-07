@@ -3,11 +3,11 @@
 #include <SFML/Main.hpp>
 #include "MainMenu.h"
 
-static class MainMenu{
+class MainMenu{
 private:
 	static sf::Font font;
 public:
-	MainMenu();
+	static void init();
 	static sf::Text T();
 	static sf::Text E();
 	static sf::Text TT();
