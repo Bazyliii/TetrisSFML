@@ -1,6 +1,6 @@
 #include "Window.h"
 
-#define WINDOW_FPS 144
+
 
 GameState AppWindow::gameState = GameState::MainMenu;
 
@@ -10,7 +10,7 @@ void AppWindow::initBeforeGame()
 	playcolor = usedColors::LShapeLeftColor;
 	quitcolor = usedColors::BoxColor;
 	scorecolor = usedColors::BoxColor;
-	tetrinospeed = 600;
+	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
 	GameOver::init();
 	arena = Arena();
@@ -22,9 +22,9 @@ void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 	if (!arena.getGameState()) return;
 	for (int j = 0; j < arenaHeight + 2; j++) {
 		for (int i = 0; i < arenaWidth + 2; i++) {
-			RectangleShape x(Vector2f(BOX_SIZE, BOX_SIZE));
+			RectangleShape x(Vector2f((float)BOX_SIZE, (float)BOX_SIZE));
 			x.setFillColor(arena.tempMatrix[j][i]);
-			x.setPosition(Vector2f(i * BOX_SIZE, j * BOX_SIZE));
+			x.setPosition(Vector2f((float)(i * BOX_SIZE), (float)(j * BOX_SIZE)));
 			renderList[list_length++] = x;
 		}
 	}
@@ -173,6 +173,7 @@ void AppWindow::gameLoop()
 		{
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
+			tetrinospeed = calcTetrinoSpeed();
 			clock.restart();
 		}
 		renderArena(renderList, list_length);

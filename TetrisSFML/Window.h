@@ -11,6 +11,8 @@
 #include "GameState.h"
 
 #define BOX_SIZE 25
+#define WINDOW_FPS 144
+#define TETRINO_MAX_SPEED 100
 
 using namespace sf;
 using namespace std;
@@ -46,16 +48,23 @@ private:
 	void listenEvents();
 	//Main game loop (when GameState is game)
 	void gameLoop();
-	
+	//Calculates tetrino speed based on function from geogebra that we worked for 15min
+	int calcTetrinoSpeed()
+	{
+		double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 7.0;
+		return a > 1 ? (int)(TETRINO_MAX_SPEED * a) : TETRINO_MAX_SPEED;
+	}
+
+	int tetrinospeed;
+	sf::Color playcolor;
+	sf::Color scorecolor;
+	sf::Color quitcolor;
+
 public:
 	AppWindow();
 	//Main AppWindow loop
 	bool appLoop();
 	//Returns state of the game of enum type GameState
-	int tetrinospeed;
-	sf::Color playcolor;
-	sf::Color scorecolor;
-	sf::Color quitcolor;
 	static GameState getGameState();
 	//Sets state of the game to any of GameState enum type
 	static void setGameState(GameState _gameState);
