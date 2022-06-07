@@ -3,6 +3,8 @@
 #define TETRINO_SPEED 620
 #define WINDOW_FPS 144
 
+GameState AppWindow::gameState = GameState::MainMenu;
+
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 {
 	if (!arena.getGameState()) return;
@@ -66,7 +68,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		}
 		break;
 	case Keyboard::Key::Backspace:
-		if (!arena.getGameState()&&nickname.length()>0) {
+		if (!arena.getGameState() && nickname.length() > 0) {
 			nickname.pop_back();
 		}
 	default:
@@ -101,18 +103,9 @@ void AppWindow::listenEvents()
 	}
 }
 
-AppWindow::AppWindow() :
-	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
+void AppWindow::gameLoop()
 {
-	gameState = GameState::Game;
-	arena = Arena();
-	arena.renderRandomPiece(tetrino);
-	window.setFramerateLimit(WINDOW_FPS);
-}
-
-void AppWindow::appLoop() {
 	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
-
 	sf::Clock clock;
 	clock.restart();
 	while (window.isOpen())
@@ -126,20 +119,45 @@ void AppWindow::appLoop() {
 		}
 		renderArena(renderList, list_length);
 		listenEvents();
-		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
-		{
-			window.clear();
-			window.draw(GameOver::getGameOverAsText());
-			window.draw(GameOver::getUserInputAsText(nickname));
-			window.draw(GameOver::getGameOverScoreAsText());
-			window.display();
-		}
-		else
-		{
-			printArena(renderList, list_length);
-		}
+		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)) { break; }
+		printArena(renderList, list_length);
 	}
 	delete[] renderList;
+}
+
+
+AppWindow::AppWindow() :
+	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
+{
+	Score::init();
+	GameOver::init();
+	arena = Arena();
+	arena.renderRandomPiece(tetrino);
+	window.setFramerateLimit(WINDOW_FPS);
+}
+
+bool AppWindow::appLoop()
+{
+	switch (gameState)
+	{
+	case GameState::MainMenu:
+		setGameState(GameState::Game); //Tu main meneu
+		break;
+	case GameState::Game:
+		gameLoop();
+		break;
+	case GameState::GameLost:
+		listenEvents();
+		window.clear();
+		window.draw(GameOver::getGameOverAsText());
+		window.draw(GameOver::getUserInputAsText(nickname));
+		window.draw(GameOver::getGameOverScoreAsText());
+		window.display();
+		break;
+	case GameState::ScorePeek:
+		break;
+	}
+	return window.isOpen();
 }
 
 GameState AppWindow::getGameState()

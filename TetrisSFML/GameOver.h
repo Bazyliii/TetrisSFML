@@ -3,11 +3,12 @@
 #include <SFML/Main.hpp>
 #include "Score.h"
 
-static class GameOver: public Score{
+class GameOver
+{
 private:
 	static sf::Font font;
 public:
-	GameOver();
+	static void init();
 	static sf::Text getGameOverAsText();
 	static sf::Text getGameOverScoreAsText();
 	static sf::Text getUserInputAsText(std::string nickname);

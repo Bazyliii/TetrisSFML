@@ -6,8 +6,8 @@
 
 sf::Font GameOver::font;
 
-GameOver::GameOver()
-{
+
+void GameOver::init() {
 	font.loadFromFile("fonts\\Gameplay.ttf");
 }
 

@@ -7,7 +7,7 @@
 int Score::points = 0;
 sf::Font Score::font;
 
-Score::Score()
+void Score::init()
 {
 	font.loadFromFile("fonts\\Gameplay.ttf");
 }

@@ -8,5 +8,5 @@ int main(void)
 {
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	AppWindow appWindow;
-	appWindow.appLoop();
+	while(appWindow.appLoop());
 }

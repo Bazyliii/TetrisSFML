@@ -22,17 +22,16 @@ private:
 	static GameState gameState;
 	RenderWindow window;
 	iTetrino tetrino;
-	Score score;
-	GameOver gameover;
 	string nickname;
 	void renderArena(RectangleShape* renderList, int& list_length);
 	void printArena(RectangleShape* renderList, int& list_length);
 	void handleKeyPressed(Event event);
 	void listenEvents();
+	void gameLoop();
 	
 public:
 	AppWindow();
-	void appLoop();
+	bool appLoop();
 	static GameState getGameState();
 	static void setGameState(GameState _gameState);
 };
