@@ -17,7 +17,7 @@ sf::Text GameOver::getGameOverAsText()
 	text.setFont(font);
 	text.setString("GAME OVER");
 	text.setCharacterSize(72);
-	text.setPosition(18, 200);
+	text.setPosition(18, 130);
 	text.setFillColor(usedColors::TextColor);
 	return text;
 }
