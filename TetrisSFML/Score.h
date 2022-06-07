@@ -16,8 +16,8 @@ public:
 	static void addToScore(int x);
 	static void saveScore(std::string name)
 	{
-		if (name.length() < 1) return;
-		appendToFile(name + ":" + std::to_string(getScore()), "score");
+	//	if (name.length() < 1) return;
+	//	appendToFile(name + ":" + std::to_string(getScore()), "score");
 	}
 	//Returns top 10 scores
 	static std::string getTopScore() 
