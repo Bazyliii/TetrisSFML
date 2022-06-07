@@ -83,6 +83,7 @@ bool Arena::printBlock(iTetrino& tetrino)
 			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
+			cout << "\a";
 			Score::addToScore(100);
 			clearLine();
 			//Do poprawienia

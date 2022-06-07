@@ -127,6 +127,8 @@ void AppWindow::handleKeyPressed(Event event) {
 			setGameState(GameState::MainMenu);
 		}
 		break;
+	case Keyboard::Key::Escape:
+		exit(69);
 	default:
 		break;
 	}
