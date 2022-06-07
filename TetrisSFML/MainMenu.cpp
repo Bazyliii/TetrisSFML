@@ -1,8 +1,5 @@
-
 #include "MainMenu.h"
-
 #define PRZESUNIECIE 30
-
 #define FONT_SIZE 90
 
 sf::Font MainMenu::font;

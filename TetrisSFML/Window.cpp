@@ -13,6 +13,7 @@ void AppWindow::initBeforeGame()
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
 	GameOver::init();
+	Scoreboard::init();
 	arena = Arena();
 	arena.renderRandomPiece(tetrino);
 }
@@ -85,7 +86,8 @@ void AppWindow::handleKeyPressed(Event event) {
 			if (playcolor == usedColors::LShapeLeftColor) {
 				scorecolor = usedColors::LShapeLeftColor;
 				playcolor = usedColors::BoxColor;
-			}else if (scorecolor == usedColors::LShapeLeftColor) {
+			}
+			else if (scorecolor == usedColors::LShapeLeftColor) {
 				quitcolor = usedColors::LShapeLeftColor;
 				scorecolor = usedColors::BoxColor;
 			}
@@ -103,7 +105,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		}
 		break;
 	case Keyboard::Key::Backspace:
-		if (!arena.getGameState() && nickname.length() > 0) 
+		if (!arena.getGameState() && nickname.length() > 0)
 		{
 			nickname.pop_back();
 		}
@@ -121,14 +123,22 @@ void AppWindow::handleKeyPressed(Event event) {
 				exit(2);
 			}
 		}
-		if (getGameState()==GameState::GameLost)
+		if (getGameState() == GameState::GameLost)
 		{
 			Score::saveScore(nickname);
 			setGameState(GameState::MainMenu);
 		}
 		break;
 	case Keyboard::Key::Escape:
-		exit(69);
+		if (getGameState() == GameState::MainMenu) {
+			exit(69);
+		}
+		if (getGameState() == GameState::ScorePeek){
+			setGameState(GameState::MainMenu);
+		}
+		if (getGameState() == GameState::Game) {
+			setGameState(GameState::GameLost);
+		}
 	default:
 		break;
 	}
@@ -178,6 +188,8 @@ void AppWindow::gameLoop()
 		}
 		renderArena(renderList, list_length);
 		listenEvents();
+		if (getGameState() == GameState::GameLost) { break; }
+		if (getGameState() == GameState::MainMenu) { break; }
 		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)) { break; }
 		printArena(renderList, list_length);
 	}
