@@ -35,9 +35,9 @@ sf::Text GameOver::getGameOverScoreAsText() {
 sf::Text GameOver::getUserInputAsText(std::string nickname) {
 	sf::Text nick;
 	nick.setFont(font);
-	nick.setString(nickname);
+	nick.setString("Nickname: \n" +nickname);
 	nick.setCharacterSize(42);
-	nick.setPosition(18, 290);
+	nick.setPosition(18, 434);
 	nick.setFillColor(usedColors::TextColor);
 	return nick;
 }

@@ -65,6 +65,10 @@ void AppWindow::handleKeyPressed(Event event) {
 			arena.printBlock(tetrino);
 		}
 		break;
+	case Keyboard::Key::Backspace:
+		if (!arena.getGameState()&&nickname.length()>0) {
+			nickname.pop_back();
+		}
 	default:
 		break;
 	}
@@ -84,9 +88,11 @@ void AppWindow::listenEvents()
 			handleKeyPressed(event);
 			break;
 		case Event::TextEntered:
-			if (!arena.getGameState() && event.text.unicode < 128)
+			if (!arena.getGameState() && event.text.unicode < 126 && event.text.unicode >= 33 && event.text.unicode != 96)
 			{
-				nickname += static_cast<char>(event.text.unicode);
+				if (nickname.length() < 8) {
+					nickname += static_cast<char>(event.text.unicode);
+				}
 			}
 			break;
 		default:
@@ -118,13 +124,9 @@ void AppWindow::appLoop() {
 			arena.printBlock(tetrino);
 			clock.restart();
 		}
-		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
-		{
-			//When game is lost:
-		}
 		renderArena(renderList, list_length);
 		listenEvents();
-		if (!arena.getGameState())
+		if (!arena.getGameState() || tetrino.IsStatic() && !arena.renderRandomPiece(tetrino))
 		{
 			window.clear();
 			window.draw(GameOver::getGameOverAsText());
