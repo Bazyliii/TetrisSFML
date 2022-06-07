@@ -52,6 +52,7 @@ public:
 	//Main AppWindow loop
 	bool appLoop();
 	//Returns state of the game of enum type GameState
+	int tetrinospeed;
 	sf::Color playcolor;
 	sf::Color scorecolor;
 	sf::Color quitcolor;

@@ -1,6 +1,5 @@
 #include "Window.h"
 
-#define TETRINO_SPEED 620
 #define WINDOW_FPS 144
 
 GameState AppWindow::gameState = GameState::MainMenu;
@@ -11,6 +10,7 @@ void AppWindow::initBeforeGame()
 	playcolor = usedColors::LShapeLeftColor;
 	quitcolor = usedColors::BoxColor;
 	scorecolor = usedColors::BoxColor;
+	tetrinospeed = 600;
 	Score::init();
 	GameOver::init();
 	arena = Arena();
@@ -169,7 +169,7 @@ void AppWindow::gameLoop()
 	while (window.isOpen())
 	{
 		int list_length = 0;
-		if (clock.getElapsedTime().asMilliseconds() >= TETRINO_SPEED)
+		if (clock.getElapsedTime().asMilliseconds() >= tetrinospeed)
 		{
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
