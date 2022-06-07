@@ -8,6 +8,9 @@ GameState AppWindow::gameState = GameState::MainMenu;
 void AppWindow::initBeforeGame()
 {
 	nickname = "";
+	playcolor = usedColors::LShapeLeftColor;
+	quitcolor = usedColors::BoxColor;
+	scorecolor = usedColors::BoxColor;
 	Score::init();
 	GameOver::init();
 	arena = Arena();
@@ -53,7 +56,14 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::W:
 		if (getGameState() == GameState::MainMenu) {
-
+			if (quitcolor == usedColors::LShapeLeftColor) {
+				scorecolor = usedColors::LShapeLeftColor;
+				quitcolor = usedColors::BoxColor;
+			}
+			else if (scorecolor == usedColors::LShapeLeftColor) {
+				playcolor = usedColors::LShapeLeftColor;
+				scorecolor = usedColors::BoxColor;
+			}
 		}
 		else {
 			tetrino.rotateCW();
@@ -72,7 +82,13 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::S:
 		if (getGameState() == GameState::MainMenu) {
-
+			if (playcolor == usedColors::LShapeLeftColor) {
+				scorecolor = usedColors::LShapeLeftColor;
+				playcolor = usedColors::BoxColor;
+			}else if (scorecolor == usedColors::LShapeLeftColor) {
+				quitcolor = usedColors::LShapeLeftColor;
+				scorecolor = usedColors::BoxColor;
+			}
 		}
 		else {
 			tetrino.moveDown();
@@ -94,7 +110,16 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::Enter:
 		if (getGameState() == GameState::MainMenu) {
-
+			if (playcolor == usedColors::LShapeLeftColor) {
+				initBeforeGame();
+				setGameState(GameState::Game);
+			}
+			if (scorecolor == usedColors::LShapeLeftColor) {
+				setGameState(GameState::ScorePeek);
+			}
+			if (quitcolor == usedColors::LShapeLeftColor) {
+				exit(2);
+			}
 		}
 		if (getGameState()==GameState::GameLost)
 		{
@@ -170,8 +195,6 @@ bool AppWindow::appLoop()
 	switch (gameState)
 	{
 	case GameState::MainMenu:
-		//initBeforeGame();
-		//setGameState(GameState::Game); //Tu main meneu
 		listenEvents();
 		window.clear();
 		window.draw(MainMenu::T());
@@ -180,9 +203,9 @@ bool AppWindow::appLoop()
 		window.draw(MainMenu::R());
 		window.draw(MainMenu::I());
 		window.draw(MainMenu::S());
-		window.draw(MainMenu::PlayButton());
-		window.draw(MainMenu::HighScoreButton());
-		window.draw(MainMenu::QuitButton());
+		window.draw(MainMenu::PlayButton(playcolor));
+		window.draw(MainMenu::HighScoreButton(scorecolor));
+		window.draw(MainMenu::QuitButton(quitcolor));
 		window.display();
 		break;
 	case GameState::Game:

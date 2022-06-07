@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "MainMenu.h"
+#include "Colors.h"
 
 class MainMenu{
 private:
@@ -14,7 +15,7 @@ public:
 	static sf::Text R();
 	static sf::Text I();
 	static sf::Text S();
-	static sf::Text PlayButton();
-	static sf::Text HighScoreButton();
-	static sf::Text QuitButton();
+	static sf::Text PlayButton(sf::Color color);
+	static sf::Text HighScoreButton(sf::Color color);
+	static sf::Text QuitButton(sf::Color color);
 };
