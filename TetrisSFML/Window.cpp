@@ -85,7 +85,7 @@ void AppWindow::handleKeyPressed(Event event) {
 	case Keyboard::Key::Enter:
 		if (getGameState()==GameState::GameLost)
 		{
-			Score::saveScore();
+			Score::saveScore(nickname);
 			setGameState(GameState::MainMenu);
 		}
 		break;
