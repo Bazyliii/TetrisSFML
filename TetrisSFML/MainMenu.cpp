@@ -1,7 +1,6 @@
 #include "GameOver.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
-#include "Window.h"
 #include "MainMenu.h"
 #include "Colors.h"
 #define PRZESUNIECIE 30

@@ -1,9 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
-#include "MainMenu.h"
 #include "Colors.h"
-
 class MainMenu{
 private:
 	static sf::Font font;
