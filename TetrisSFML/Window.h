@@ -12,7 +12,7 @@
 
 #define BOX_SIZE 25
 #define WINDOW_FPS 144
-#define TETRINO_MAX_SPEED 100
+#define TETRINO_MAX_SPEED 140
 
 using namespace sf;
 using namespace std;
@@ -51,7 +51,7 @@ private:
 	//Calculates tetrino speed based on function from geogebra that we worked for 15min
 	int calcTetrinoSpeed()
 	{
-		double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 7.0;
+		double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 6.0;
 		return a > 1 ? (int)(TETRINO_MAX_SPEED * a) : TETRINO_MAX_SPEED;
 	}
 
