@@ -68,9 +68,18 @@ void AppWindow::handleKeyPressed(Event event) {
 		}
 		break;
 	case Keyboard::Key::Backspace:
-		if (!arena.getGameState() && nickname.length() > 0) {
+		if (!arena.getGameState() && nickname.length() > 0) 
+		{
 			nickname.pop_back();
 		}
+		break;
+	case Keyboard::Key::Enter:
+		if (getGameState()==GameState::GameLost)
+		{
+			Score::saveScore();
+			setGameState(GameState::MainMenu);
+		}
+		break;
 	default:
 		break;
 	}
@@ -141,6 +150,7 @@ bool AppWindow::appLoop()
 	switch (gameState)
 	{
 	case GameState::MainMenu:
+		arena = Arena();
 		setGameState(GameState::Game); //Tu main meneu
 		break;
 	case GameState::Game:
