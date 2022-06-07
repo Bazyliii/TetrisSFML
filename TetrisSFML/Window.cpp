@@ -111,6 +111,7 @@ void AppWindow::handleKeyPressed(Event event) {
 	case Keyboard::Key::Enter:
 		if (getGameState() == GameState::MainMenu) {
 			if (playcolor == usedColors::LShapeLeftColor) {
+				initBeforeGame();
 				setGameState(GameState::Game);
 			}
 			if (scorecolor == usedColors::LShapeLeftColor) {
@@ -194,8 +195,6 @@ bool AppWindow::appLoop()
 	switch (gameState)
 	{
 	case GameState::MainMenu:
-		//initBeforeGame();
-		//setGameState(GameState::Game); //Tu main meneu
 		listenEvents();
 		window.clear();
 		window.draw(MainMenu::T());
