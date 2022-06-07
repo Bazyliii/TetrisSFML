@@ -10,6 +10,7 @@
 #include "MainMenu.h"
 #include "GameState.h"
 #include "Scoreboard.h"
+#include "Sounds.h"
 
 #define BOX_SIZE 25
 #define WINDOW_FPS 144

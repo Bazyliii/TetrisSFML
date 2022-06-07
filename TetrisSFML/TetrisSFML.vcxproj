@@ -157,6 +157,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="Sounds.cpp" />
     <ClCompile Include="Tetrino.cpp" />
     <ClCompile Include="TetrisArena.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Scoreboard.h" />
+    <ClInclude Include="Sounds.h" />
     <ClInclude Include="Tetrino.h" />
     <ClInclude Include="TetrisArena.h" />
     <ClInclude Include="Window.h" />
