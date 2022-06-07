@@ -38,12 +38,3 @@ void Score::addToScore(int x)
 {
 	points += x;
 }
-
-//void Score::saveScore(int points)
-//{
-//	//fstream file;
-//	//file.open("score.txt", ios::out);
-//	//file << points << endl;
-//	//file.close();
-//
-//}
