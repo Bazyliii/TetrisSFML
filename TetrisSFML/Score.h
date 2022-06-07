@@ -16,12 +16,20 @@ public:
 	static void addToScore(int x);
 	static void saveScore(std::string name)
 	{
-	//	if (name.length() < 1) return;
-	//	appendToFile(name + ":" + std::to_string(getScore()), "score");
+		if (name.length() < 1) return;
+		FileIO::appendToFile(name + ":" + std::to_string(getScore()), "score");
 	}
 	//Returns top 10 scores
 	static std::string getTopScore() 
 	{
+		std::string score = FileIO::readFromFile("score");
+		int numberOfEntrys = 0;
+		for (auto& ch : score)
+		{
+			if (ch == '\n') numberOfEntrys++;
+		}
 
+
+		return "";
 	}
 };

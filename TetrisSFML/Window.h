@@ -52,6 +52,7 @@ private:
 	int calcTetrinoSpeed()
 	{
 		double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 7.0;
+		Score::getTopScore();
 		return a > 1 ? (int)(TETRINO_MAX_SPEED * a) : TETRINO_MAX_SPEED;
 	}
 
