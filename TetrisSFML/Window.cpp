@@ -240,6 +240,9 @@ int AppWindow::calcTetrinoSpeed()
 AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
+	sf::Image icon;
+	icon.loadFromFile("icon.png");
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	nickname = "";
 	MainMenu::init();
 	initBeforeGame();
