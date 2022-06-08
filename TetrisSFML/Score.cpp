@@ -2,6 +2,8 @@
 
 
 int Score::points = 0;
+int Score::counter = 0;
+int Score::combo = 0;
 sf::Font Score::font;
 
 bool Score::sortbysec(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b)
@@ -103,4 +105,34 @@ std::string Score::getTopScore()
 	}
 
 	return str;
+}
+void Score::countercount() {
+	counter++;
+}
+
+int Score::getCombo() {
+	switch (counter)
+	{
+	case 1:
+		combo = 1;
+		break;
+	case 2:
+		combo = 3;
+		break;
+	case 3:
+		combo = 5;
+		break;
+	case 4:
+		combo = 8;
+		break;
+	default:
+		combo = 0;
+		break;
+	}
+
+	return combo;
+}
+
+void Score::resetcounter() {
+	counter=0;
 }

@@ -81,7 +81,6 @@ bool Arena::printBlock(iTetrino& tetrino)
 			Sounds::playsound(UsedSounds::fall);
 			Score::addToScore(100);
 			clearLine();
-			//Do poprawienia
 			return true;
 		default:
 			throw 0;
@@ -143,7 +142,9 @@ void Arena::clearLine()
 		catch (int x)
 		{
 			if (x == 0) continue;
-			else return;
+			else {
+				return;
+			}
 		}
 
 		for (int j = k; j >= 2; j--)
@@ -154,9 +155,11 @@ void Arena::clearLine()
 				tempMatrix[j][i] = tempMatrix[j - 1][i];
 			}
 		}
-		Score::addToScore(1000);
 		k++;
+		Score::countercount();
 	}
+	Score::addToScore(Score::getCombo() * 1000);
+	Score::resetcounter();
 }
 
 bool Arena::getGameState()
