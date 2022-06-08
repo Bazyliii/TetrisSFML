@@ -108,7 +108,7 @@ void AppWindow::handleKeyPressed(Event event) {
 				usedColors::scorecolor = usedColors::BoxColor;
 			}
 		}
-		else 
+		else
 		{
 			clock.restart();
 			tetrino.moveDown();
@@ -179,9 +179,10 @@ void AppWindow::listenEvents()
 			handleKeyPressed(event);
 			break;
 		case Event::TextEntered:
-			if (!arena.getGameState() && event.text.unicode < 126 && event.text.unicode >= 33 && event.text.unicode != 96)
+			if (getGameState() == GameState::GameLost && event.text.unicode < 126 && event.text.unicode >= 33 && event.text.unicode != 96)
 			{
-				if (nickname.length() < 8) {
+				if (nickname.length() < 8) 
+				{
 					nickname += static_cast<char>(event.text.unicode);
 				}
 			}
@@ -213,8 +214,8 @@ void AppWindow::gameLoop()
 		printArena(renderList, list_length);
 		if (getGameState() == GameState::GameLost) { break; }
 		if (getGameState() == GameState::MainMenu) { break; }
-		if (tetrino.IsStatic()) 
-		{ 
+		if (tetrino.IsStatic())
+		{
 			tetrino = nextTetrino;
 			arena.RandomPiece(nextTetrino);
 			if (!arena.printBlock(tetrino)) break;
