@@ -38,6 +38,8 @@ private:
 	iTetrino nextTetrino;
 	//Stores player's nickname
 	string nickname;
+	//Clock data
+	sf::Clock clock;
 
 
 	///Function declarations

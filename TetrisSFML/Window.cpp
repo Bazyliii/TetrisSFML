@@ -5,6 +5,7 @@ GameState AppWindow::gameState = GameState::MainMenu;
 void AppWindow::initBeforeGame()
 {
 	//nickname = ""; //With this nickname's gonna reset every new game is played
+	clock = Clock();
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
 	GameOver::init();
@@ -107,7 +108,9 @@ void AppWindow::handleKeyPressed(Event event) {
 				usedColors::scorecolor = usedColors::BoxColor;
 			}
 		}
-		else {
+		else 
+		{
+			clock.restart();
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
 		}
@@ -115,6 +118,7 @@ void AppWindow::handleKeyPressed(Event event) {
 	case Keyboard::Key::Space:
 		while (!tetrino.IsStatic() && arena.getGameState())
 		{
+			clock.restart();
 			tetrino.moveDown();
 			arena.printBlock(tetrino);
 		}
@@ -192,7 +196,6 @@ void AppWindow::gameLoop()
 {
 	int numberOfElements = ((arenaWidth + 2) * (arenaHeight + 2)) + (iTetrino::getHeight() * iTetrino::getWidth());
 	RectangleShape* renderList = new RectangleShape[numberOfElements];
-	sf::Clock clock;
 	clock.restart();
 	while (window.isOpen())
 	{
