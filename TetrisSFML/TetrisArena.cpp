@@ -92,59 +92,34 @@ bool Arena::printBlock(iTetrino& tetrino)
 
 bool Arena::renderRandomPiece(iTetrino& tetrino)
 {
-	{
-		switch (susage(generatorRNG)) {
-		case 0:
-			tetrino = Box();
-			break;
-		case 1:
-			tetrino = TShape();
-			break;
-		case 2:
-			tetrino = IShape();
-			break;
-		case 3:
-			tetrino = LShapeLeft();
-			break;
-		case 4:
-			tetrino = LShapeRight();
-			break;
-		case 5:
-			tetrino = ZShapeLeft();
-			break;
-		case 6:
-			tetrino = ZShapeRight();
-			break;
-		}
-		return printBlock(tetrino);
-	}
+	RandomPiece(tetrino);
+	return printBlock(tetrino);
 }
 void Arena::RandomPiece(iTetrino& tetrino)
 {
+	switch (susage(generatorRNG))
 	{
-		switch (susage(generatorRNG)) {
-		case 0:
-			tetrino = Box();
-			break;
-		case 1:
-			tetrino = TShape();
-			break;
-		case 2:
-			tetrino = IShape();
-			break;
-		case 3:
-			tetrino = LShapeLeft();
-			break;
-		case 4:
-			tetrino = LShapeRight();
-			break;
-		case 5:
-			tetrino = ZShapeLeft();
-			break;
-		case 6:
-			tetrino = ZShapeRight();
-			break;
-		}
+	case 0:
+		tetrino = Box();
+		break;
+	case 1:
+		tetrino = TShape();
+		break;
+	case 2:
+		tetrino = IShape();
+		break;
+	case 3:
+		tetrino = LShapeLeft();
+		break;
+	case 4:
+		tetrino = LShapeRight();
+		break;
+	case 5:
+		tetrino = ZShapeLeft();
+		break;
+	case 6:
+		tetrino = ZShapeRight();
+		break;
 	}
 }
 

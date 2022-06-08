@@ -35,7 +35,8 @@ void AppWindow::renderNextTetrino(RectangleShape* renderList, int& list_length)
 	if (!arena.getGameState()) return;
 	for (int j = 0; j < nextTetrino.getLength(); j++)
 	{
-		for (int i = 0; i < nextTetrino.getLength(); i++) {
+		for (int i = 0; i < nextTetrino.getLength(); i++) 
+		{
 			RectangleShape x(Vector2f((float)BOX_SIZE, (float)BOX_SIZE));
 			if (nextTetrino.block[j][i] == usedColors::backgroundColor) continue;
 			x.setFillColor(nextTetrino.block[j][i]);
