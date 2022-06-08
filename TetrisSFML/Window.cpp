@@ -4,7 +4,7 @@ GameState AppWindow::gameState = GameState::MainMenu;
 
 void AppWindow::initBeforeGame()
 {
-	//nickname = ""; //With this nickname's gonna reset every new game is played
+s
 	clock = Clock();
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
