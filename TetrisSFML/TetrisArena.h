@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Tetrino.h"
 #include "Score.h"
-#include "Colors.h"
+#include "GameConsts.h"
 #include <random>
 #include "GameState.h"
 #define arenaWidth 10

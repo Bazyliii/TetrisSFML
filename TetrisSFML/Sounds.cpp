@@ -1,14 +1,10 @@
 #include "Sounds.h"
-
 sf::Music Sounds::backgroundmusic;
-sf::SoundBuffer Sounds::fall;
-sf::SoundBuffer Sounds::gameoversound;
-sf::Sound Sounds::falls;
+sf::SoundBuffer Sounds::buffer;
+sf::Sound Sounds::soundthing;
 
 void Sounds::init()
 {
-	fall.loadFromFile("sounds\\fall.wav");
-	gameoversound.loadFromFile("sounds\\gameover.wav");
 	backgroundmusic.openFromFile("sounds\\backgroundmusic.wav");
 }
 
@@ -17,15 +13,9 @@ void Sounds::playmusic() {
 	backgroundmusic.play();
 	backgroundmusic.setVolume(10);
 }
-
-void Sounds::fallen() {
-	falls.setBuffer(fall);
-	falls.play();
-	falls.setVolume(20);
-}
-
-void Sounds::gameover() {
-	falls.setBuffer(gameoversound);
-	falls.play();
-	falls.setVolume(10);
+void Sounds::playsound(std::string soundlocation) {
+	buffer.loadFromFile(soundlocation);
+	soundthing.setBuffer(buffer);
+	soundthing.play();
+	soundthing.setVolume(20);
 }

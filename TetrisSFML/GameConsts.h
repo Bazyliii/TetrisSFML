@@ -16,3 +16,11 @@ public:
 	static sf::Color scorecolor;
 	static sf::Color quitcolor;
 };
+
+class UsedSounds {
+public:
+	static std::string gameover;
+	static std::string fall;
+	static std::string switchsound;
+	static std::string choose;
+};

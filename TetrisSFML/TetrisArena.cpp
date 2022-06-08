@@ -71,14 +71,14 @@ bool Arena::printBlock(iTetrino& tetrino)
 		case 1:
 			if (!tetrino.moveToLastPos())
 			{
-				Sounds::gameover();
+				Sounds::playsound(UsedSounds::gameover);
 				AppWindow::setGameState(GameState::GameLost);
 				return false;
 			}
 			if (!printBlock(tetrino)) return false;
 			saveMatrix();
 			tetrino.setStatic();
-			Sounds::fallen();
+			Sounds::playsound(UsedSounds::fall);
 			Score::addToScore(100);
 			clearLine();
 			//Do poprawienia

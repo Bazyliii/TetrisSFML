@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
-#include "Colors.h"
+#include "GameConsts.h"
 
 //Static class... needs to be initialized before use
 class MainMenu{

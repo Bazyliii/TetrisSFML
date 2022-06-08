@@ -1,6 +1,5 @@
 #include "Tetrino.h"
-#include <time.h>
-#include "Colors.h"
+
 using namespace sf;
 
 Box::Box()

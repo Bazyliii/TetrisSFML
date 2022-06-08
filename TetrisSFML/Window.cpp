@@ -1,7 +1,5 @@
 #include "Window.h"
 
-
-
 GameState AppWindow::gameState = GameState::MainMenu;
 
 void AppWindow::initBeforeGame()
@@ -54,6 +52,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::W:
 		if (getGameState() == GameState::MainMenu) {
+			Sounds::playsound(UsedSounds::switchsound);
 			if (usedColors::quitcolor == usedColors::LShapeLeftColor) {
 				usedColors::scorecolor = usedColors::LShapeLeftColor;
 				usedColors::quitcolor = usedColors::BoxColor;
@@ -80,6 +79,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::S:
 		if (getGameState() == GameState::MainMenu) {
+			Sounds::playsound(UsedSounds::switchsound);
 			if (usedColors::playcolor == usedColors::LShapeLeftColor) {
 				usedColors::scorecolor = usedColors::LShapeLeftColor;
 				usedColors::playcolor = usedColors::BoxColor;
@@ -109,6 +109,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::Enter:
 		if (getGameState() == GameState::MainMenu) {
+			Sounds::playsound(UsedSounds::choose);
 			if (usedColors::playcolor == usedColors::LShapeLeftColor) {
 				initBeforeGame();
 				setGameState(GameState::Game);
@@ -117,6 +118,7 @@ void AppWindow::handleKeyPressed(Event event) {
 				setGameState(GameState::ScorePeek);
 			}
 			if (usedColors::quitcolor == usedColors::LShapeLeftColor) {
+				sf::sleep(sf::seconds(0.3f));
 				exit(2);
 			}
 		}

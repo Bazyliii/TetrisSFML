@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "fileIO.h"
-#include "Colors.h"
+#include "GameConsts.h"
 #include <fstream>
 
 //Static class... needs to be initialized before use

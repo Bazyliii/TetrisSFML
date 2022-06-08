@@ -27,7 +27,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Pliki zasobów</Filter>
     </ClCompile>
-    <ClCompile Include="Colors.cpp">
+    <ClCompile Include="GameConsts.cpp">
       <Filter>Pliki zasobów</Filter>
     </ClCompile>
     <ClCompile Include="Score.cpp">
@@ -56,7 +56,7 @@
     <ClInclude Include="Window.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Colors.h">
+    <ClInclude Include="GameConsts.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Score.h">

@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Colors.cpp" />
+    <ClCompile Include="GameConsts.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -163,7 +163,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Colors.h" />
+    <ClInclude Include="GameConsts.h" />
     <ClInclude Include="fileIO.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />

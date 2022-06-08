@@ -1,9 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
+
 #include "TetrisArena.h"
 #include "Tetrino.h"
-#include "Colors.h"
+#include "GameConsts.h"
 #include "Score.h"
 #include "GameOver.h"
 #include <time.h>

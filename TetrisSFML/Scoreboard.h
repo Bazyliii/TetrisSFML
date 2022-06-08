@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "Score.h"
-#include "Colors.h"
+#include "GameConsts.h"
 
 class Scoreboard
 {

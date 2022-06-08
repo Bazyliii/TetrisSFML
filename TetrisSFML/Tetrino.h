@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Colors.h"
-
+#include "GameConsts.h"
+#include <time.h>
 
 class iTetrino
 {
