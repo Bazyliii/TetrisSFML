@@ -219,15 +219,15 @@ bool AppWindow::appLoop()
 	case GameState::MainMenu:
 		listenEvents();
 		window.clear();
-		window.draw(MainMenu::T());
-		window.draw(MainMenu::E());
-		window.draw(MainMenu::TT());
-		window.draw(MainMenu::R());
-		window.draw(MainMenu::I());
-		window.draw(MainMenu::S());
-		window.draw(MainMenu::PlayButton(usedColors::playcolor));
-		window.draw(MainMenu::HighScoreButton(usedColors::scorecolor));
-		window.draw(MainMenu::QuitButton(usedColors::quitcolor));
+		window.draw(MainMenu::MainMenuLogo("T", 20, usedColors::ZShapeLeftColor));
+		window.draw(MainMenu::MainMenuLogo("E", 105, usedColors::ZShapeRightColor));
+		window.draw(MainMenu::MainMenuLogo("T", 190, usedColors::ZShapeRightColor));
+		window.draw(MainMenu::MainMenuLogo("R", 275, usedColors::LShapeLeftColor));
+		window.draw(MainMenu::MainMenuLogo("I", 360, usedColors::IShapeColor));
+		window.draw(MainMenu::MainMenuLogo("S", 414, usedColors::BoxColor));
+		window.draw(MainMenu::MainMenuButton("PLAY", 210, usedColors::playcolor));
+		window.draw(MainMenu::MainMenuButton("HIGHSCORES", 305, usedColors::scorecolor));
+		window.draw(MainMenu::MainMenuButton("QUIT", 400, usedColors::quitcolor));
 		window.display();
 		break;
 	case GameState::Game:

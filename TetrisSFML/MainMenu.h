@@ -13,13 +13,6 @@ public:
 	static void init();
 
 	//Get texboxes to render on screen
-	static sf::Text T();
-	static sf::Text E();
-	static sf::Text TT();
-	static sf::Text R();
-	static sf::Text I();
-	static sf::Text S();
-	static sf::Text PlayButton(sf::Color color);
-	static sf::Text HighScoreButton(sf::Color color);
-	static sf::Text QuitButton(sf::Color color);
+	static sf::Text MainMenuLogo(std::string content, int x, sf::Color color);
+	static sf::Text MainMenuButton(std::string content, int y, sf::Color color);
 };
