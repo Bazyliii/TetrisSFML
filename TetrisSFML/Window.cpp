@@ -4,13 +4,14 @@ GameState AppWindow::gameState = GameState::MainMenu;
 
 void AppWindow::initBeforeGame()
 {
-	nickname = "";
+	//nickname = ""; //With this nickname's gonna reset every new game is played
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
 	GameOver::init();
 	Scoreboard::init();
 	arena = Arena();
 	arena.renderRandomPiece(tetrino);
+	arena.RandomPiece(nextTetrino);
 }
 
 void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
@@ -21,6 +22,23 @@ void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 			RectangleShape x(Vector2f((float)BOX_SIZE, (float)BOX_SIZE));
 			x.setFillColor(arena.tempMatrix[j][i]);
 			x.setPosition(Vector2f((float)(i * BOX_SIZE), (float)(j * BOX_SIZE)));
+			renderList[list_length++] = x;
+		}
+	}
+}
+
+//Add next tetrino tiles to render list
+
+void AppWindow::renderNextTetrino(RectangleShape* renderList, int& list_length)
+{
+	if (!arena.getGameState()) return;
+	for (int j = 0; j < iTetrino::getHeight(); j++)
+	{
+		for (int i = 0; i < iTetrino::getWidth(); i++) {
+			RectangleShape x(Vector2f((float)BOX_SIZE, (float)BOX_SIZE));
+			if (nextTetrino.block[j][i] == usedColors::backgroundColor) continue;
+			x.setFillColor(nextTetrino.block[j][i]);
+			x.setPosition(Vector2f((float)(i * BOX_SIZE + NEXT_TETRINO_OFFSET_X), (float)(j * BOX_SIZE + NEXT_TETRINO_OFFSET_Y)));
 			renderList[list_length++] = x;
 		}
 	}
@@ -122,7 +140,7 @@ void AppWindow::handleKeyPressed(Event event) {
 				exit(2);
 			}
 		}
-		if (getGameState() == GameState::GameLost && nickname.length()>0)
+		if (getGameState() == GameState::GameLost && nickname.length() > 0)
 		{
 			Score::saveScore(nickname);
 			setGameState(GameState::MainMenu);
@@ -132,7 +150,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		if (getGameState() == GameState::MainMenu) {
 			exit(69);
 		}
-		if (getGameState() == GameState::ScorePeek){
+		if (getGameState() == GameState::ScorePeek) {
 			setGameState(GameState::MainMenu);
 		}
 		if (getGameState() == GameState::Game) {
@@ -172,7 +190,8 @@ void AppWindow::listenEvents()
 
 void AppWindow::gameLoop()
 {
-	RectangleShape* renderList = new RectangleShape[(arenaWidth + 2) * (arenaHeight + 2)];
+	int numberOfElements = ((arenaWidth + 2) * (arenaHeight + 2)) + (iTetrino::getHeight() * iTetrino::getWidth());
+	RectangleShape* renderList = new RectangleShape[numberOfElements];
 	sf::Clock clock;
 	clock.restart();
 	while (window.isOpen())
@@ -186,16 +205,22 @@ void AppWindow::gameLoop()
 			clock.restart();
 		}
 		renderArena(renderList, list_length);
+		renderNextTetrino(renderList, list_length);
 		listenEvents();
+		printArena(renderList, list_length);
 		if (getGameState() == GameState::GameLost) { break; }
 		if (getGameState() == GameState::MainMenu) { break; }
-		if (tetrino.IsStatic() && !arena.renderRandomPiece(tetrino)) { break; }
-		printArena(renderList, list_length);
+		if (tetrino.IsStatic()) 
+		{ 
+			tetrino = nextTetrino;
+			arena.RandomPiece(nextTetrino);
+			if (!arena.printBlock(tetrino)) break;
+		}
 	}
 	delete[] renderList;
 }
 
-//Calculates tetrino speed based on function from geogebra that we worked for 15min
+//Calculates tetrino speed based on function from geogebra that we've worked on for 15min
 
 int AppWindow::calcTetrinoSpeed()
 {
@@ -207,6 +232,7 @@ int AppWindow::calcTetrinoSpeed()
 AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)
 {
+	nickname = "";
 	MainMenu::init();
 	initBeforeGame();
 	window.setFramerateLimit(WINDOW_FPS);

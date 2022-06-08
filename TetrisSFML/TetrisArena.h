@@ -18,6 +18,7 @@ public:
 	Arena();
 	bool printBlock(iTetrino& tetrino);
 	bool renderRandomPiece(iTetrino& tetrino);
+	void RandomPiece(iTetrino& tetrino);
 	void saveMatrix();
 	void clearLine();
 	bool getGameState();

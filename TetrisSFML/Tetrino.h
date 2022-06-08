@@ -40,7 +40,12 @@ public:
 	sf::Color getColor();
 	uint16_t getOff_Y();
 	int16_t getOff_X();
+	//Returns minimal lenght of cube's side
 	int getLength();
+	//Returns static max width of tetrino
+	static int getWidth();
+	//Returns static max height of tetrino
+	static int getHeight();
 	bool IsStatic();
 	void setStatic();
 	Move lastMove();

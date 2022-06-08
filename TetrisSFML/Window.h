@@ -16,6 +16,8 @@
 #define BOX_SIZE 25
 #define WINDOW_FPS 144
 #define TETRINO_MAX_SPEED 140
+#define NEXT_TETRINO_OFFSET_X 350
+#define NEXT_TETRINO_OFFSET_Y 100
 
 using namespace sf;
 using namespace std;
@@ -33,6 +35,7 @@ private:
 	RenderWindow window;
 	//Interface that's gonna have different tetrinos assigned
 	iTetrino tetrino;
+	iTetrino nextTetrino;
 	//Stores player's nickname
 	string nickname;
 
@@ -41,8 +44,10 @@ private:
 
 	//Perform init of all used comp so that we start a new game
 	void initBeforeGame();
-	//Prepare object list to be rendered
+	//Add arena tiles to render list
 	void renderArena(RectangleShape* renderList, int& list_length);
+	//Add next tetrino tiles to render list
+	void renderNextTetrino(RectangleShape* renderList, int& list_length);
 	//Print (render) given object list on window's screen
 	void printArena(RectangleShape* renderList, int& list_length);
 	//Self explanatory

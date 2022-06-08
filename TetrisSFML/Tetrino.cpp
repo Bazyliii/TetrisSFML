@@ -178,6 +178,14 @@ int iTetrino::getLength()
 	return length;
 }
 
+int iTetrino::getWidth() {
+	return width;
+}
+
+int iTetrino::getHeight() {
+	return height;
+}
+
 bool iTetrino::IsStatic()
 {
 	return State;
