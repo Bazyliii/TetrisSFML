@@ -4,7 +4,6 @@ GameState AppWindow::gameState = GameState::MainMenu;
 
 void AppWindow::initBeforeGame()
 {
-s
 	clock = Clock();
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
