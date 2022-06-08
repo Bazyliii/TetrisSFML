@@ -7,9 +7,6 @@ GameState AppWindow::gameState = GameState::MainMenu;
 void AppWindow::initBeforeGame()
 {
 	nickname = "";
-	playcolor = usedColors::LShapeLeftColor;
-	quitcolor = usedColors::BoxColor;
-	scorecolor = usedColors::BoxColor;
 	tetrinospeed = calcTetrinoSpeed();
 	Score::init();
 	GameOver::init();
@@ -57,13 +54,13 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::W:
 		if (getGameState() == GameState::MainMenu) {
-			if (quitcolor == usedColors::LShapeLeftColor) {
-				scorecolor = usedColors::LShapeLeftColor;
-				quitcolor = usedColors::BoxColor;
+			if (usedColors::quitcolor == usedColors::LShapeLeftColor) {
+				usedColors::scorecolor = usedColors::LShapeLeftColor;
+				usedColors::quitcolor = usedColors::BoxColor;
 			}
-			else if (scorecolor == usedColors::LShapeLeftColor) {
-				playcolor = usedColors::LShapeLeftColor;
-				scorecolor = usedColors::BoxColor;
+			else if (usedColors::scorecolor == usedColors::LShapeLeftColor) {
+				usedColors::playcolor = usedColors::LShapeLeftColor;
+				usedColors::scorecolor = usedColors::BoxColor;
 			}
 		}
 		else {
@@ -83,13 +80,13 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::S:
 		if (getGameState() == GameState::MainMenu) {
-			if (playcolor == usedColors::LShapeLeftColor) {
-				scorecolor = usedColors::LShapeLeftColor;
-				playcolor = usedColors::BoxColor;
+			if (usedColors::playcolor == usedColors::LShapeLeftColor) {
+				usedColors::scorecolor = usedColors::LShapeLeftColor;
+				usedColors::playcolor = usedColors::BoxColor;
 			}
-			else if (scorecolor == usedColors::LShapeLeftColor) {
-				quitcolor = usedColors::LShapeLeftColor;
-				scorecolor = usedColors::BoxColor;
+			else if (usedColors::scorecolor == usedColors::LShapeLeftColor) {
+				usedColors::quitcolor = usedColors::LShapeLeftColor;
+				usedColors::scorecolor = usedColors::BoxColor;
 			}
 		}
 		else {
@@ -112,18 +109,18 @@ void AppWindow::handleKeyPressed(Event event) {
 		break;
 	case Keyboard::Key::Enter:
 		if (getGameState() == GameState::MainMenu) {
-			if (playcolor == usedColors::LShapeLeftColor) {
+			if (usedColors::playcolor == usedColors::LShapeLeftColor) {
 				initBeforeGame();
 				setGameState(GameState::Game);
 			}
-			if (scorecolor == usedColors::LShapeLeftColor) {
+			if (usedColors::scorecolor == usedColors::LShapeLeftColor) {
 				setGameState(GameState::ScorePeek);
 			}
-			if (quitcolor == usedColors::LShapeLeftColor) {
+			if (usedColors::quitcolor == usedColors::LShapeLeftColor) {
 				exit(2);
 			}
 		}
-		if (getGameState() == GameState::GameLost)
+		if (getGameState() == GameState::GameLost && nickname.length()>0)
 		{
 			Score::saveScore(nickname);
 			setGameState(GameState::MainMenu);
@@ -226,9 +223,9 @@ bool AppWindow::appLoop()
 		window.draw(MainMenu::R());
 		window.draw(MainMenu::I());
 		window.draw(MainMenu::S());
-		window.draw(MainMenu::PlayButton(playcolor));
-		window.draw(MainMenu::HighScoreButton(scorecolor));
-		window.draw(MainMenu::QuitButton(quitcolor));
+		window.draw(MainMenu::PlayButton(usedColors::playcolor));
+		window.draw(MainMenu::HighScoreButton(usedColors::scorecolor));
+		window.draw(MainMenu::QuitButton(usedColors::quitcolor));
 		window.display();
 		break;
 	case GameState::Game:

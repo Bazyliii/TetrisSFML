@@ -12,4 +12,7 @@ public:
 	static const sf::Color ZShapeRightColor;
 	static const sf::Color ZShapeLeftColor;
 	static const sf::Color TextColor;
+	static sf::Color playcolor;
+	static sf::Color scorecolor;
+	static sf::Color quitcolor;
 };

@@ -10,3 +10,7 @@ const sf::Color usedColors::LShapeLeftColor(48, 79, 254);
 const sf::Color usedColors::ZShapeRightColor(255, 61, 0);
 const sf::Color usedColors::ZShapeLeftColor(255, 255, 0);
 const sf::Color usedColors::TextColor(255, 0, 0);
+sf::Color usedColors::playcolor(48, 79, 254);
+sf::Color usedColors::scorecolor(213, 0, 249);
+sf::Color usedColors::quitcolor(213, 0, 249);
+

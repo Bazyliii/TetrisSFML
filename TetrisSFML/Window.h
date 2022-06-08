@@ -54,10 +54,6 @@ private:
 	int calcTetrinoSpeed();
 	//Actual delay
 	int tetrinospeed;
-	//Colors?? here????
-	sf::Color playcolor;
-	sf::Color scorecolor;
-	sf::Color quitcolor;
 
 public:
 	AppWindow();
