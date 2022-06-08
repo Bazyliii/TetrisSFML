@@ -33,13 +33,13 @@ void AppWindow::renderArena(RectangleShape* renderList, int& list_length)
 void AppWindow::renderNextTetrino(RectangleShape* renderList, int& list_length)
 {
 	if (!arena.getGameState()) return;
-	for (int j = 0; j < iTetrino::getHeight(); j++)
+	for (int j = 0; j < nextTetrino.getLength(); j++)
 	{
-		for (int i = 0; i < iTetrino::getWidth(); i++) {
+		for (int i = 0; i < nextTetrino.getLength(); i++) {
 			RectangleShape x(Vector2f((float)BOX_SIZE, (float)BOX_SIZE));
 			if (nextTetrino.block[j][i] == usedColors::backgroundColor) continue;
 			x.setFillColor(nextTetrino.block[j][i]);
-			x.setPosition(Vector2f((float)(i * BOX_SIZE + NEXT_TETRINO_OFFSET_X), (float)(j * BOX_SIZE + NEXT_TETRINO_OFFSET_Y)));
+			x.setPosition(Vector2f((float)(i * BOX_SIZE  + 500/5*4-BOX_SIZE*nextTetrino.getLength()/2), (float)(j * BOX_SIZE + NEXT_TETRINO_OFFSET_Y)));
 			renderList[list_length++] = x;
 		}
 	}
@@ -70,6 +70,7 @@ void AppWindow::handleKeyPressed(Event event) {
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::W:
+	case Keyboard::Key::Up:
 		if (getGameState() == GameState::MainMenu) {
 			Sounds::playsound(UsedSounds::switchsound);
 			if (usedColors::quitcolor == usedColors::LShapeLeftColor) {
@@ -89,14 +90,17 @@ void AppWindow::handleKeyPressed(Event event) {
 
 		//MOVEMENT
 	case Keyboard::Key::A:
+	case Keyboard::Key::Left:
 		tetrino.moveLeft();
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::D:
+	case Keyboard::Key::Right:
 		tetrino.moveRight();
 		arena.printBlock(tetrino);
 		break;
 	case Keyboard::Key::S:
+	case Keyboard::Key::Down:
 		if (getGameState() == GameState::MainMenu) {
 			Sounds::playsound(UsedSounds::switchsound);
 			if (usedColors::playcolor == usedColors::LShapeLeftColor) {
