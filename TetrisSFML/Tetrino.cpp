@@ -188,3 +188,8 @@ void iTetrino::setStatic()
 {
 	State = true;
 }
+
+iTetrino::Move iTetrino::lastMove()
+{
+	return move;
+}

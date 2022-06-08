@@ -196,6 +196,14 @@ void AppWindow::gameLoop()
 	delete[] renderList;
 }
 
+//Calculates tetrino speed based on function from geogebra that we worked for 15min
+
+int AppWindow::calcTetrinoSpeed()
+{
+	double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 6.0;
+	return a > 1 ? (int)(TETRINO_MAX_SPEED * a) : TETRINO_MAX_SPEED;
+}
+
 
 AppWindow::AppWindow() :
 	window(VideoMode(500, 550), "Tetris", Style::Titlebar | Style::Close)

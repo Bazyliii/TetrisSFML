@@ -43,13 +43,7 @@ public:
 	int getLength();
 	bool IsStatic();
 	void setStatic();
-	Move lastMove() 
-	{
-		return move;
-	}
-
-
-
+	Move lastMove();
 };
 
 

@@ -50,14 +50,11 @@ private:
 	void listenEvents();
 	//Main game loop (when GameState is game)
 	void gameLoop();
-	//Calculates tetrino speed based on function from geogebra that we worked for 15min
-	int calcTetrinoSpeed()
-	{
-		double a = (-1.0 / 2137.0) * (6.0 / 9420.0) * (6.0 / 9420.0) * (double)Score::getScore() * (double)Score::getScore() + 6.0;
-		return a > 1 ? (int)(TETRINO_MAX_SPEED * a) : TETRINO_MAX_SPEED;
-	}
-
+	//Calculates tetrino speed based on function from geogebra that we've worked on for 15min
+	int calcTetrinoSpeed();
+	//Actual delay
 	int tetrinospeed;
+	//Colors?? here????
 	sf::Color playcolor;
 	sf::Color scorecolor;
 	sf::Color quitcolor;
