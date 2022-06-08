@@ -17,7 +17,7 @@
 #define WINDOW_FPS 144
 #define TETRINO_MAX_SPEED 140
 #define NEXT_TETRINO_OFFSET_X 350
-#define NEXT_TETRINO_OFFSET_Y 100
+#define NEXT_TETRINO_OFFSET_Y 120
 
 using namespace sf;
 using namespace std;
