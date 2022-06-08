@@ -5,6 +5,8 @@
 #include "Colors.h"
 #include <fstream>
 
+//Static class... needs to be initialized before use
+//Holds score of actual game
 class Score
 {
 private:

@@ -2,11 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Main.hpp>
 #include "Colors.h"
+
+//Static class... needs to be initialized before use
 class MainMenu{
 private:
+	//Font used for text
 	static sf::Font font;
 public:
+	//Initialize class in place of constructor
 	static void init();
+
+	//Get texboxes to render on screen
 	static sf::Text T();
 	static sf::Text E();
 	static sf::Text TT();
